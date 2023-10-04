@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b8d9fd6678829dc4b89dc1a80bbdd2a2
+timeCreated: 1536183991
+licenseType: Store
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Emulator
+  fontNames:
+  - Emulator
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
