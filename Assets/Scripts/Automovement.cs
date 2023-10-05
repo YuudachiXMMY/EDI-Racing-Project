@@ -19,13 +19,15 @@ public class Automovement : MonoBehaviour
     private float distanceTotal = 3749.302f;
 
     public float speed;
+    public float angularSpeed;
     public float acceleration;
 
     // Start is called before the first frame update
     void Start()
     {
-        navMeshAgent.speed = speed;
-        navMeshAgent.acceleration = acceleration;
+        //navMeshAgent.speed = speed;
+        //navMeshAgent.angularSpeed = angularSpeed;
+        //navMeshAgent.acceleration = acceleration;
 
         distancePrevious = Vector3.Distance(transform.position, targets[targetsCounter].position);
     }
@@ -53,6 +55,7 @@ public class Automovement : MonoBehaviour
         {
             arrive = false;
             navMeshAgent.speed = speed;
+            navMeshAgent.angularSpeed = angularSpeed;
             navMeshAgent.acceleration = acceleration;
             distanceTraveled += Mathf.Abs(distanceBetweenTar - distancePrevious);
             distancePercentage = (float)System.Math.Round(distanceTraveled / distanceTotal * 100, 2);
