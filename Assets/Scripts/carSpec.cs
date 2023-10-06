@@ -10,6 +10,7 @@ public class carSpec : MonoBehaviour
     public float rbMass;
     public float rbAngularDrag;
 
+    public float speed;
     public float automoveSpeed;
     public float automoveAngularSpeed;
     public float automoveAcceleration;

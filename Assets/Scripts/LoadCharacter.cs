@@ -41,7 +41,7 @@ public class LoadCharacter : MonoBehaviour
             var columns = lines.Split(",");
             string characterName = columns[0].ToString();
             int selectedCharacter = int.Parse(columns[1]);
-            string[] funcList = new string[] { columns[2].ToString() };
+            string[] funcList = columns[2].Split("/"); //new string[] { columns[2].SToString() };
             initializePlayer(characterPrefabs[selectedCharacter], characterName, funcList);
         }
     }
@@ -60,11 +60,12 @@ public class LoadCharacter : MonoBehaviour
         automoveAcceleration = carSpecification.automoveAcceleration;
         automoveBaseOffset = carSpecification.automoveBaseOffset;
 
-        player = Instantiate(character, spawnPoint.position, spawnPoint.rotation);
+        player = Instantiate(character, spawnPoint.position, spawnPoint.rotation) as GameObject;
         player.name = characterName;
 
         MeshCollider playerMS = player.AddComponent<MeshCollider>();
         playerMS.convex = true;
+        //playerMS.isTrigger = true;
 
         Rigidbody playerRB = player.AddComponent<Rigidbody>();
         playerRB.mass = rbMass;
@@ -79,9 +80,9 @@ public class LoadCharacter : MonoBehaviour
 
         Automovement automovement = player.AddComponent<Automovement>();
         automovement.navMeshAgent = navMeshAgent;
-        automovement.speed = automoveSpeed;
-        automovement.angularSpeed = automoveAngularSpeed;
-        automovement.acceleration = automoveAcceleration;
+        //automovement.speed = automoveSpeed;
+        //automovement.angularSpeed = automoveAngularSpeed;
+        //automovement.acceleration = automoveAcceleration;
         automovement.targets = automoveTargets;
 
         //GameObject freelookCamera = GameObject.Find("FreeLook Camera");
