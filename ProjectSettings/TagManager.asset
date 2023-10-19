@@ -3,18 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Cars
-  - ButtonEvents
-<<<<<<< HEAD
-  - MainTrack
-=======
->>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Road
+  - 
   - Water
   - UI
   - 

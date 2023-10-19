@@ -6,11 +6,7 @@
     "com.unity.collab-proxy": "2.0.5",
     "com.unity.feature.mobile": "1.0.0",
     "com.unity.ide.rider": "3.0.24",
-<<<<<<< HEAD
     "com.unity.ide.visualstudio": "2.0.22",
-=======
-    "com.unity.ide.visualstudio": "2.0.18",
->>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2
     "com.unity.ide.vscode": "1.2.5",
     "com.unity.render-pipelines.high-definition": "14.0.8",
     "com.unity.render-pipelines.universal": "14.0.8",
