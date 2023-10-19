@@ -4,60 +4,72 @@ using UnityEngine;
 
 public class Automovement : MonoBehaviour
 {
-
     public UnityEngine.AI.NavMeshAgent navMeshAgent;
-    public Transform[] target;
-    private int targetCounter;
 
-    private bool arrived = false;
+    public Transform[] targets;
+    private int targetsCounter;
 
-    public float range = 10f;
+    private bool arrive = false;
+
+    public float distancePercentage;
     public float distanceTraveled;
-    private float distance;
-    private float prevDistance;
-    private float totalDistance = 2461.054f;
-    public float percentageDistance;
+    private float range = 45f;
+    private float distanceBetweenTar;
+    private float distancePrevious;
+    private float distanceTotal = 1000000.00f;
 
-    public float carSpeed = 50.0f;
-    public float carAcceleration = 8.0f;
-
+    // Start is called before the first frame update
     void Start()
     {
-        navMeshAgent.speed = carSpeed;
-        navMeshAgent.acceleration = carAcceleration;
-        prevDistance = Vector3.Distance(transform.position, target[targetCounter].position);
+        distancePrevious = Vector3.Distance(transform.position, targets[targetsCounter].position);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (!arrived)
+        carSpec carSpecification = this.GetComponent<carSpec>();
+
+        if (!arrive)
         {
-            navMeshAgent.SetDestination(target[targetCounter].position);
+            navMeshAgent.SetDestination(targets[targetsCounter].position);
         }
 
-        distance = Vector3.Distance(transform.position, target[targetCounter].position);
+        distanceBetweenTar = Vector3.Distance(transform.position, targets[targetsCounter].position);
 
-
-        if (distance > range)
+        if (distanceBetweenTar < range)
         {
-            arrived = false;
-            navMeshAgent.speed = carSpeed;
-            navMeshAgent.acceleration = carAcceleration;
-
-            distanceTraveled += Mathf.Abs(distance - prevDistance);
-            percentageDistance = (float)System.Math.Round(distanceTraveled / totalDistance * 100, 2);
-            prevDistance = distance;
-        } else
-        {
-            arrived = true;
+            arrive = true;
             navMeshAgent.speed = 0;
-            if (targetCounter != target.Length - 1)
+            if (targetsCounter < targets.Length)
             {
-                targetCounter++;
+                targetsCounter++;
+                if (targetsCounter == targets.Length)
+                {
+                    targetsCounter = 0;
+                }
             }
         }
+        else
+        {
+            arrive = false;
+            navMeshAgent.speed = carSpecification.speed;
+            navMeshAgent.angularSpeed = carSpecification.automoveAngularSpeed;
+            navMeshAgent.acceleration = carSpecification.automoveAcceleration;
+            distanceTraveled += Mathf.Abs(distanceBetweenTar - distancePrevious);
+            distancePercentage = (float)System.Math.Round(distanceTraveled / distanceTotal * 100, 2);
+            distancePrevious = Vector3.Distance(transform.position, targets[targetsCounter].position);
+            carSpecification.automoveDistanceTraveled = distanceTraveled;
+        }
+    }
 
+    public float returnDistancePercentage()
+    {
+        return distancePercentage;
+    }
+
+    public float returnDistanceTraveled()
+    {
+        return distanceTraveled;
     }
 }
