@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/CartoonTracksPack1/Track1/Meshes/Materials.meta
 guid: e00bf6d974b0f5a4e893183a1a64612b
+========
+guid: c05958d15d17ce44e9cb637bc40c6f8c
+>>>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2:Assets/PostProcessingProfile.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

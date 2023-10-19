@@ -13,10 +13,17 @@ public class Automovement : MonoBehaviour
 
     public float distancePercentage;
     public float distanceTraveled;
+<<<<<<< HEAD
     private float range = 45f;
     private float distanceBetweenTar;
     private float distancePrevious;
     private float distanceTotal = 1000000.00f;
+=======
+    private float range = 30f;
+    private float distanceBetweenTar;
+    private float distancePrevious;
+    private float distanceTotal = 3749.302f;
+>>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2
 
     // Start is called before the first frame update
     void Start()
@@ -44,10 +51,13 @@ public class Automovement : MonoBehaviour
             if (targetsCounter < targets.Length)
             {
                 targetsCounter++;
+<<<<<<< HEAD
                 if (targetsCounter == targets.Length)
                 {
                     targetsCounter = 0;
                 }
+=======
+>>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2
             }
         }
         else
@@ -59,7 +69,10 @@ public class Automovement : MonoBehaviour
             distanceTraveled += Mathf.Abs(distanceBetweenTar - distancePrevious);
             distancePercentage = (float)System.Math.Round(distanceTraveled / distanceTotal * 100, 2);
             distancePrevious = Vector3.Distance(transform.position, targets[targetsCounter].position);
+<<<<<<< HEAD
             carSpecification.automoveDistanceTraveled = distanceTraveled;
+=======
+>>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2
         }
     }
 

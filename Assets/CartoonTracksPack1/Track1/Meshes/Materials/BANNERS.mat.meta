@@ -1,8 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/CartoonTracksPack1/Track1/Meshes/Materials/BANNERS.mat.meta
 guid: cc78efcdfefbd1946b3cfd8213f5b476
+========
+guid: ae38a2be6b4f1ad4d9db6947fdd25889
+>>>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2:Assets/PostProcessingProfile/Main Camera Profile.asset.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

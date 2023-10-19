@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Track_1.unity.meta
 guid: b7e721b3820420b4db6d4ca31d86dcb2
+========
+guid: 79de7bb7757fdf34b9fe45758d230d18
+>>>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2:Assets/Scenes/selection.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

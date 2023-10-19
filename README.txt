@@ -4,7 +4,10 @@ HotKeys:
 [Left Shift] Move Faster
 [Space] Go Higher
 [Left Control] Go lower
+<<<<<<< HEAD
 [E] Pause Game and Open Events Menu
+=======
+>>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2
 
 
 Event Buttons:

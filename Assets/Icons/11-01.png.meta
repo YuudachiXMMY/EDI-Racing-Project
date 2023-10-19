@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Icons/11-01.png.meta
 guid: e7310e460236b7542b717bd8a84c85d0
+========
+guid: 7df9f0a8c4069fc4199b85d75ed72df7
+>>>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2:Assets/Icons/29-01.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

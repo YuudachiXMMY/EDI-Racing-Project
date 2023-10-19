@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/CartoonTracksPack1/Track1/Textures/barriers.psd.meta
 guid: 14f6f75987d2d2a48b03ff5199ae9fda
+========
+guid: e7310e460236b7542b717bd8a84c85d0
+>>>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2:Assets/Icons/11-01.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -23,24 +27,35 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+<<<<<<<< HEAD:Assets/CartoonTracksPack1/Track1/Textures/barriers.psd.meta
+========
+  vTOnly: 0
+>>>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2:Assets/Icons/11-01.png.meta
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: 1
+  textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
     filterMode: -1
     aniso: -1
     mipBias: -100
+<<<<<<<< HEAD:Assets/CartoonTracksPack1/Track1/Textures/barriers.psd.meta
     wrapU: -1
     wrapV: -1
     wrapW: -1
   nPOTScale: 1
+========
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+>>>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2:Assets/Icons/11-01.png.meta
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,15 +64,20 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+<<<<<<<< HEAD:Assets/CartoonTracksPack1/Track1/Textures/barriers.psd.meta
   applyGammaDecoding: 0
+========
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+>>>>>>>> 08213f40738c9008731357566263d6e61cf9d9b2:Assets/Icons/11-01.png.meta
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -77,7 +97,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
