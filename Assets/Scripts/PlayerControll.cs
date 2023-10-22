@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerControll : MonoBehaviour
 {
     public Camera playerCamera;
-    public float walkSpeed = 6f;
-    public float runSpeed = 12f;
+    public float walkSpeed = 35f;
+    public float runSpeed = 50f;
 
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
@@ -18,6 +18,8 @@ public class PlayerControll : MonoBehaviour
     public bool canMove = true;
     public CharacterController characterController;
 
+    private bool fixedCamera = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,18 @@ public class PlayerControll : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        // Fixed Camera Hotkeys
+        switchCameraPosition();
+
+        if (!fixedCamera)
+        {
+            // Player Control
+            playerFreeMoveControl();
+        }
+    }
+
+    void playerFreeMoveControl()
     {
         // Moving
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -50,6 +64,91 @@ public class PlayerControll : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+    }
 
+    void switchCameraPosition()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            fixedCamera = false;
+        } else if (Input.GetKeyDown(KeyCode.Alpha2) ||
+                Input.GetKeyDown(KeyCode.Alpha3) ||
+                Input.GetKeyDown(KeyCode.Alpha4) ||
+                Input.GetKeyDown(KeyCode.Alpha5) ||
+                Input.GetKeyDown(KeyCode.Alpha6) ||
+                Input.GetKeyDown(KeyCode.Alpha7) ||
+                Input.GetKeyDown(KeyCode.Alpha8) ||
+                Input.GetKeyDown(KeyCode.Alpha9) ||
+                Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            fixedCamera = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            playerCamera.transform.localRotation = Quaternion.Euler(35, 0, 0);
+            transform.rotation = Quaternion.Euler(0, -160, 0);
+            transform.position = new Vector3(-25f, 18f, -12f);
+            //playerCamera.transform.localRotation = Quaternion.Euler(35, 0, 0);
+            //transform.rotation = Quaternion.Euler(0, -160, 0);
+            //transform.position = new Vector3(1.8f, 35f, 6f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            playerCamera.transform.localRotation = Quaternion.Euler(35, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+            transform.position = new Vector3(-300f, 40f, -160f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            playerCamera.transform.localRotation = Quaternion.Euler(35, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 25, 0);
+            transform.position = new Vector3(-185f, 20f, -310f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            playerCamera.transform.localRotation = Quaternion.Euler(35, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+            transform.position = new Vector3(-115f, 15f, -295f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            playerCamera.transform.localRotation = Quaternion.Euler(35, 0, 0);
+            transform.rotation = Quaternion.Euler(0, -25, 0);
+            transform.position = new Vector3(185f, 20f, -310f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            playerCamera.transform.localRotation = Quaternion.Euler(35, 0, 0);
+            transform.rotation = Quaternion.Euler(0, -150, 0);
+            transform.position = new Vector3(220f, 20f, -35f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            playerCamera.transform.localRotation = Quaternion.Euler(25, 0, 0);
+            transform.rotation = Quaternion.Euler(0, -90, 0);
+            transform.position = new Vector3(125f, 2.5f, -27.5f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            playerCamera.transform.localRotation = Quaternion.Euler(30, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+            transform.position = new Vector3(-45f, 3f, -27.5f);
+        }
+
+        // Repeated
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            playerCamera.transform.localRotation = Quaternion.Euler(90, 0, 0);
+            transform.rotation = Quaternion.Euler(0, -180, 0);
+            transform.position = new Vector3(2f, 147.5f, -160f);
+        }
     }
 }

@@ -87,7 +87,7 @@ public class ButtonEvents : MonoBehaviour
             }
         }
 
-        GameObject.Find("BE-2").GetComponent<TMP_InputField>().text = "";
+        GameObject.Find("Event-2").GetComponent<TMP_InputField>().text = "";
     }
 
     //FacialRecognition

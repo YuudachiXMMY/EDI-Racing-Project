@@ -21,7 +21,8 @@ public class Automovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        distancePrevious = Vector3.Distance(transform.position, targets[targetsCounter].position);
+        distancePrevious = Vector3.Distance(this.transform.position, targets[targetsCounter].position);
+        distanceTraveled = 0;
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class Automovement : MonoBehaviour
             navMeshAgent.SetDestination(targets[targetsCounter].position);
         }
 
-        distanceBetweenTar = Vector3.Distance(transform.position, targets[targetsCounter].position);
+        distanceBetweenTar = Vector3.Distance(this.transform.position, targets[targetsCounter].position);
 
         if (distanceBetweenTar < range)
         {
@@ -58,7 +59,7 @@ public class Automovement : MonoBehaviour
             navMeshAgent.acceleration = carSpecification.automoveAcceleration;
             distanceTraveled += Mathf.Abs(distanceBetweenTar - distancePrevious);
             distancePercentage = (float)System.Math.Round(distanceTraveled / distanceTotal * 100, 2);
-            distancePrevious = Vector3.Distance(transform.position, targets[targetsCounter].position);
+            distancePrevious = Vector3.Distance(this.transform.position, targets[targetsCounter].position);
             carSpecification.automoveDistanceTraveled = distanceTraveled;
         }
     }
