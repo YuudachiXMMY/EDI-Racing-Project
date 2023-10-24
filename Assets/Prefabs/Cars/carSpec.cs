@@ -15,11 +15,9 @@ public class carSpec : MonoBehaviour
     public float automoveAngularSpeed;
     public float automoveAcceleration;
     public float automoveBaseOffset;
-    public float automoveDistanceTraveled;
+    public float automoveRankedTime;
+    public float automoveRound;
+    public float automoveTargetsTotalCount;
 
     public string[] functionList;
-
-    void Start()
-    {
-    }
 }

@@ -8,10 +8,9 @@ public class ScoreDashboard : MonoBehaviour
 {
 
     public GameObject[] scoredashboardColumns;
-    public GameObject scoredashboardTop10;
+    public GameObject[] generalScoredashboardColumns;
 
     private Dictionary<string, carSpec> carsData;
-    //private Dictionary<string, float> carsDataRanking;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +22,11 @@ public class ScoreDashboard : MonoBehaviour
     void Update()
     {
         parseCarSpec();
-        updateScoreDashboard();
+        updateScoreDashboard(scoredashboardColumns, 30);
+        updateScoreDashboard(generalScoredashboardColumns, 40);
     }
 
-    void parseCarSpec()
+    private void parseCarSpec()
     {
         GameObject[] carsObj = GameObject.FindGameObjectsWithTag("Cars");
 
@@ -40,44 +40,35 @@ public class ScoreDashboard : MonoBehaviour
             {
                 carsData[carSpecification.groupName] = carSpecification;
             }
-            //if (!carsDataRanking.ContainsKey(carSpecification.groupName))
-            //{
-            //    carsDataRanking.Add(carSpecification.groupName, carSpecification.automoveDistanceTraveled);
-            //}
-            //else
-            //{
-            //    carsDataRanking[carSpecification.groupName] = carSpecification.automoveDistanceTraveled;
-            //}
         }
     }
 
-    void updateScoreDashboard()
+    private void updateScoreDashboard(GameObject[] columns, int splitNum)
     {
-        var sortedCarsData = carsData.OrderByDescending(pair => pair.Value.automoveDistanceTraveled);
+        var sortedCarsData = carsData.OrderByDescending(pair => pair.Value.automoveRankedTime)
+                                     .OrderByDescending(pair => pair.Value.automoveTargetsTotalCount);
+                                    //.OrderByDescending(pair => pair.Value.automoveRound);
         int scoredashboardIndex = 0;
         int counts = 0;
-        TMPro.TextMeshProUGUI mTextTMP = scoredashboardColumns[scoredashboardIndex].GetComponent<TMPro.TextMeshProUGUI>();
+        TMPro.TextMeshProUGUI mTextTMP = columns[scoredashboardIndex].GetComponent<TMPro.TextMeshProUGUI>();
         mTextTMP.text = "";
         foreach (var pair in sortedCarsData)
         {
-            mTextTMP.text += (counts+1).ToString() + ". " + pair.Key + ": " + System.Math.Round(pair.Value.automoveDistanceTraveled, 2).ToString() + "\n";
-            counts ++;
-            if (counts % 18 == 0)
+            mTextTMP.text += generateScorboardTextFormat(counts, pair.Key, pair.Value.automoveRound, pair.Value.automoveRankedTime);
+            counts++;
+            if (counts % splitNum == 0)
             {
                 scoredashboardIndex++;
-                mTextTMP = scoredashboardColumns[scoredashboardIndex].GetComponent<TMPro.TextMeshProUGUI>();
+                mTextTMP = columns[scoredashboardIndex].GetComponent<TMPro.TextMeshProUGUI>();
                 mTextTMP.text = "";
             }
         }
+    }
 
-        var top10 = sortedCarsData.Take(10);
-        counts = 0;
-        mTextTMP = scoredashboardTop10.GetComponent<TMPro.TextMeshProUGUI>();
-        mTextTMP.text = "[Top 10]\n";
-        foreach (var pair in top10)
-        {
-            mTextTMP.text += (counts + 1).ToString() + ". " + pair.Key + ": " + System.Math.Round(pair.Value.automoveDistanceTraveled, 2).ToString() + "\n";
-            counts++;
-        }
+    // return String : Score Dashboard Content
+    private string generateScorboardTextFormat(float count, string groupName, float round, float RankedTime)
+    {
+        return "(" + (count + 1).ToString() + ") " + groupName + ": ["
+                + round.ToString() + "] " + System.Math.Round(RankedTime, 2).ToString() + "\n";
     }
 }

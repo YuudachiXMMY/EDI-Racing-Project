@@ -1,10 +1,8 @@
 # Build Updates
 Demo build with finalized Design:
-- Map updates to Race Track with infinite loops
-- Score Dashboard with Ranking
-- Created Events Menu
-- Fixed Camera Positions
-- Updated Hotkeys
+- Change Score Dashboard Ranking based on Time arrived at Checkpoints
+- Improve Screen
+- Updated Hotkeys : switch Hotkeys between Dashboard Menu `Tab` and Pause `P`
 
 build from https://github.com/YuudachiXMMY/Diversity-Vehicle-Project/commit/
 
@@ -22,9 +20,9 @@ build from https://github.com/YuudachiXMMY/Diversity-Vehicle-Project/commit/
 [Left Control] Go lower
 
 ### 【Menus HotKeys】
-[Tab] Pause/Continue Game
+[P] Pause/Continue Game
 [E] Open Events Menu (will Pause Game)
-[M] Open Score Dashboard (will Pause Game)
+[Tab] Open Score Dashboard (will Pause Game)
 
 ### 【Event Buttons】
 

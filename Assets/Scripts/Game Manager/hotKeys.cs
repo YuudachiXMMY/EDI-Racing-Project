@@ -5,7 +5,7 @@ using UnityEngine;
 public class hotKeys : MonoBehaviour
 {
 
-    private bool gamePause = true;
+    public static bool gamePause = true;
     private GameObject[] eventButtons;
     private GameObject[] pauseUIs;
     private GameObject[] scoreDashbaords;
@@ -26,32 +26,37 @@ public class hotKeys : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Tab to Pause Game
-        if (!gamePause && Input.GetKeyDown(KeyCode.Tab))
-        {
-            gamePause = true;
-            setActive(pauseUIs);
-        }
+            // `P` to Pause Game
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                gamePause = true;
+                setActive(pauseUIs);
+            }
 
-        // "E" to Pause Game and Open Events Menu
-        if (!gamePause && Input.GetKeyDown(KeyCode.E))
-        {
-            gamePause = true;
-            setActive(eventButtons);
-            setActive(pauseUIs);
-        }
+            // `E` to Pause Game and Open Events Menu
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                gamePause = true;
+                setActive(eventButtons);
+                setActive(pauseUIs);
+                setActive(scoreRankingTop10, false);
+                setActive(scoreDashbaords, false);
+            }
 
-        // "M" to Open Score Dashboard
-        if (!gamePause && Input.GetKeyDown(KeyCode.M))
-        {
-            gamePause = true;
-            setActive(scoreDashbaords);
-            setActive(pauseUIs);
-            setActive(scoreRankingTop10, false);
-        }
+            // `Tab` to Open Score Dashboard
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                gamePause = true;
+                setActive(scoreDashbaords);
+                setActive(pauseUIs);
+                setActive(scoreRankingTop10, false);
+                setActive(eventButtons, false);
+            }
+        
+        
 
         // "Escape" to Continue Game and Close All Menu
-        if (gamePause && Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             gamePause = false;
             setActive(eventButtons, false);

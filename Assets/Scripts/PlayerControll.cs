@@ -32,14 +32,14 @@ public class PlayerControll : MonoBehaviour
         // Fixed Camera Hotkeys
         switchCameraPosition();
 
-        if (!fixedCamera)
+        if (!fixedCamera && !hotKeys.gamePause)
         {
             // Player Control
             playerFreeMoveControl();
         }
     }
 
-    void playerFreeMoveControl()
+    private void playerFreeMoveControl()
     {
         // Moving
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -66,7 +66,7 @@ public class PlayerControll : MonoBehaviour
         }
     }
 
-    void switchCameraPosition()
+    private void switchCameraPosition()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

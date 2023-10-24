@@ -39,10 +39,6 @@ public class CE_1 : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.CompareTag("Event"))
-        //{
-        //    Debug.Log("Event Triggered");
-        //}
         carSpec carSpecification = other.gameObject.GetComponent<carSpec>();
         if (System.Array.IndexOf(carSpecification.functionList, "FacialRecognition") != -1 ||
             System.Array.IndexOf(carSpecification.functionList, "FingerprintDetection") != -1)
