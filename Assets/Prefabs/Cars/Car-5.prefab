@@ -63,6 +63,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 48cd618cd02bb034492a2960c2fc7ddd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 950872636215344634}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 48cd618cd02bb034492a2960c2fc7ddd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5773442765550937873}
   m_SourcePrefab: {fileID: 100100000, guid: 48cd618cd02bb034492a2960c2fc7ddd, type: 3}
 --- !u!1 &4746848560789653338 stripped
 GameObject:
@@ -81,17 +84,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34bc420594fa03e4ba270598b8086b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groupName: Test-4
-  model: 0
+  groupName: 59
+  model: 4
   color: blue
-  rbMass: 2000
-  rbAngularDrag: 1200
+  rbMass: 1500
+  rbAngularDrag: 120
   speed: 30
   automoveSpeed: 30
   automoveAngularSpeed: 350
   automoveAcceleration: 100
   automoveBaseOffset: 1.1
-  automoveDistanceTraveled: 0
+  automoveRankedTime: 0
+  automoveRound: 0
+  automoveTargetsTotalCount: 0
   functionList:
+  - FacialRecognition
   - VoiceAssistant
   - PedestrianDetection
+--- !u!64 &-5773442765550937873
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4746848560789653338}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3988080087758987323, guid: 48cd618cd02bb034492a2960c2fc7ddd, type: 3}

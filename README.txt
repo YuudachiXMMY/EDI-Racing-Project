@@ -2,7 +2,8 @@
 Demo build with finalized Design:
 - Change Score Dashboard Ranking based on Time arrived at Checkpoints
 - Improve Screen
-- Updated Hotkeys : switch Hotkeys between Dashboard Menu `Tab` and Pause `P`
+- Updated Hotkeys : Dashboard Menu `Tab` and Pause `P`
+- Add Hotkeys : `H` Toggle Ranking Dashboard
 
 build from https://github.com/YuudachiXMMY/Diversity-Vehicle-Project/commit/
 
@@ -21,6 +22,7 @@ build from https://github.com/YuudachiXMMY/Diversity-Vehicle-Project/commit/
 
 ### 【Menus HotKeys】
 [P] Pause/Continue Game
+[H] Toggle (Open/Close) Score Ranking Dashboard
 [E] Open Events Menu (will Pause Game)
 [Tab] Open Score Dashboard (will Pause Game)
 

@@ -11,15 +11,17 @@ public class LoadCharacter : MonoBehaviour
 	public Transform spawnPoint;
 
     private GameObject player;
-	//public TMP_Text label;
+    //public TMP_Text label;
 
+    public Transform[] automoveTargets;
     private float rbMass;
     private float rbAngularDrag;
     private float automoveBaseOffset;
     private float automoveSpeed;
     private float automoveAngularSpeed;
     private float automoveAcceleration;
-    public Transform[] automoveTargets;
+
+    private Vector3 randomUnitVector;
 
     void Start()
     {
@@ -60,11 +62,12 @@ public class LoadCharacter : MonoBehaviour
         automoveAcceleration = carSpecification.automoveAcceleration;
         automoveBaseOffset = carSpecification.automoveBaseOffset;
 
-        player = Instantiate(character, spawnPoint.position, spawnPoint.rotation) as GameObject;
+        randomUnitVector = new Vector3(Random.Range(-4f, 4f), 0, Random.Range(-1f, 1f));
+        player = Instantiate(character, spawnPoint.position + 5 * randomUnitVector, spawnPoint.rotation) as GameObject;
         player.name = characterName;
 
-        MeshCollider playerMS = player.AddComponent<MeshCollider>();
-        playerMS.convex = true;
+        //MeshCollider playerMS = player.AddComponent<MeshCollider>();
+        //playerMS.convex = true;
         //playerMS.isTrigger = true;
 
         Rigidbody playerRB = player.AddComponent<Rigidbody>();

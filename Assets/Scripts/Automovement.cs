@@ -12,9 +12,10 @@ public class Automovement : MonoBehaviour
     private int targetsRound;
     private int targetsTotalCount;
 
-    private carSpec carSpecification;
+    private float range = 20.0f;
+    private float distanceBetweenTarget;
 
-    private bool arrive = false;
+    private carSpec carSpecification;
 
     private float TravelingTimer = 0.0f;
     public float DashboardTime = 0.0f;
@@ -25,6 +26,7 @@ public class Automovement : MonoBehaviour
         targetsCounter = 0;
         targetsRound = 0;
         targetsTotalCount = 0;
+        //distanceBetweenTarget = Vector3.Distance(transform.position, targets[targetsCounter].transform.position);
 
         carSpecification = this.GetComponent<carSpec>();
     }
@@ -37,54 +39,43 @@ public class Automovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        updateNavMeshAgent();
+        navMeshAgent.speed = carSpecification.speed;
+        navMeshAgent.angularSpeed = carSpecification.automoveAngularSpeed;
+        navMeshAgent.acceleration = carSpecification.automoveAcceleration;
+        navMeshAgent.SetDestination(targets[targetsCounter].position);
+
+        distanceBetweenTarget = Vector3.Distance(this.transform.position, targets[targetsCounter].position);
+
+        if (distanceBetweenTarget < range)
+        {
+            updateNavMeshAgent();
+        }
     }
 
 
     /// Public Methods
 
     // If arrived, Update DashboardTime to 0 and Arrive to true.
-    // Should used by carPointDetect.cs
+    // Should be used by carPointDetect.cs
     public void resetRankedTime()
     {
         DashboardTime = 0;
-        SetArrive(true);
+        updateNavMeshAgent(true);
     }
-
-    // Set Vehicle Arrive status
-    public void SetArrive(bool statue)
-    {
-        arrive = statue;
-    }
-
 
     /// Private Methods
 
     // If arrived, Update NavMesh Agent from one Target/Checkpoint to another
-    private void updateNavMeshAgent()
+    private void updateNavMeshAgent(bool instant = false)
     {
-        if (arrive)
+        targetsCounter++;
+        targetsTotalCount++;
+        carSpecification.automoveTargetsTotalCount = targetsTotalCount;
+        if (targetsCounter == targets.Length)
         {
-            SetArrive(false);
-            if (targetsCounter < targets.Length)
-            {
-                targetsCounter++;
-                targetsTotalCount++;
-                carSpecification.automoveTargetsTotalCount = targetsTotalCount;
-                if (targetsCounter == targets.Length)
-                {
-                    targetsCounter = 0;
-                    targetsRound += 1;
-                    carSpecification.automoveRound = targetsRound;
-                }
-            }
-        }
-        else
-        {
-            navMeshAgent.speed = carSpecification.speed;
-            navMeshAgent.angularSpeed = carSpecification.automoveAngularSpeed;
-            navMeshAgent.acceleration = carSpecification.automoveAcceleration;
-            navMeshAgent.SetDestination(targets[targetsCounter].position);
+            targetsCounter = 0;
+            targetsRound += 1;
+            carSpecification.automoveRound = targetsRound;
         }
     }
 

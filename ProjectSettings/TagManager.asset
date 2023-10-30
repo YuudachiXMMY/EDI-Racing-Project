@@ -9,7 +9,7 @@ TagManager:
   - ButtonEvents
   - paused
   - ScoreDash
-  - ScoreRankingTop10
+  - ScoreRanking
   layers:
   - Default
   - TransparentFX

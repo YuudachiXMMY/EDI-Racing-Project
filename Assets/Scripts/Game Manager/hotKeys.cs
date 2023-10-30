@@ -9,7 +9,7 @@ public class hotKeys : MonoBehaviour
     private GameObject[] eventButtons;
     private GameObject[] pauseUIs;
     private GameObject[] scoreDashbaords;
-    private GameObject[] scoreRankingTop10;
+    private GameObject[] scoreRanking;
 
     // Start is called before the first frame update
     void Start()
@@ -17,43 +17,47 @@ public class hotKeys : MonoBehaviour
         eventButtons = GameObject.FindGameObjectsWithTag("ButtonEvents");
         pauseUIs = GameObject.FindGameObjectsWithTag("paused");
         scoreDashbaords = GameObject.FindGameObjectsWithTag("ScoreDash");
-        scoreRankingTop10 = GameObject.FindGameObjectsWithTag("ScoreRankingTop10");
+        scoreRanking = GameObject.FindGameObjectsWithTag("ScoreRanking");
         setActive(eventButtons, false);
         setActive(scoreDashbaords, false);
-        setActive(scoreRankingTop10, false);
+        setActive(scoreRanking, false);
     }
 
     // Update is called once per frame
     void Update()
     {
-            // `P` to Pause Game
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                gamePause = true;
-                setActive(pauseUIs);
-            }
+        // `P` to Pause Game
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            toggleGamePause();
+            toggleActive(pauseUIs);
+        }
 
-            // `E` to Pause Game and Open Events Menu
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                gamePause = true;
-                setActive(eventButtons);
-                setActive(pauseUIs);
-                setActive(scoreRankingTop10, false);
-                setActive(scoreDashbaords, false);
-            }
+        // `E` to Pause Game and Open Events Menu
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            gamePause = true;
+            setActive(eventButtons);
+            setActive(pauseUIs);
+            setActive(scoreRanking, false);
+            setActive(scoreDashbaords, false);
+        }
 
-            // `Tab` to Open Score Dashboard
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                gamePause = true;
-                setActive(scoreDashbaords);
-                setActive(pauseUIs);
-                setActive(scoreRankingTop10, false);
-                setActive(eventButtons, false);
-            }
-        
-        
+        // `Tab` to Open Score Dashboard
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            toggleGamePause();
+            toggleActive(scoreDashbaords);
+            toggleActive(pauseUIs);
+            setActive(scoreRanking, false);
+            setActive(eventButtons, false);
+        }
+
+        // "H" to Hide Score Ranking List
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            toggleActive(scoreRanking);
+        }
 
         // "Escape" to Continue Game and Close All Menu
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -62,16 +66,42 @@ public class hotKeys : MonoBehaviour
             setActive(eventButtons, false);
             setActive(scoreDashbaords, false);
             setActive(pauseUIs, false);
-            setActive(scoreRankingTop10);
+            setActive(scoreRanking);
         }
 
     }
 
-    void setActive(GameObject[] buttons, bool status = true)
+    private void toggleGamePause()
     {
-        foreach (GameObject button in buttons)
+        if (gamePause)
         {
-            button.SetActive(status);
+            gamePause = false;
+        }
+        else
+        {
+            gamePause = true;
+        }
+    }
+
+    private void setActive(GameObject[] tars, bool status = true)
+    {
+        foreach (GameObject tar in tars)
+        {
+            tar.SetActive(status);
+        }
+    }
+
+    private void toggleActive(GameObject[] tars, bool status = true)
+    {
+        foreach (GameObject tar in tars)
+        {
+            if (tar.activeSelf)
+            {
+                tar.SetActive(false);
+            } else
+            {
+                tar.SetActive(true);
+            }
         }
     }
 

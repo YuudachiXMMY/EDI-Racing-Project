@@ -26,12 +26,10 @@ public class CE_1 : MonoBehaviour
         timer += Time.deltaTime;
         if (triggered && timer > curTime + waitTime)
         {
-            Debug.Log("Time Triggered");
             while (updateListIndex != -1)
             {
                 updateList[updateListIndex].GetComponent<carSpec>().speed = updateList[updateListIndex].GetComponent<carSpec>().automoveSpeed;
                 updateListIndex--;
-                Debug.Log(updateListIndex);
             }
             triggered = false;
         }
@@ -47,7 +45,6 @@ public class CE_1 : MonoBehaviour
             curTime = timer;
             updateListIndex++;
             updateList[updateListIndex] = other.gameObject;
-            Debug.Log(updateListIndex);
             triggered = true;
         }
     }

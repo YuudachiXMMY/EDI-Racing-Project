@@ -19,7 +19,7 @@ public class ScoreDashboard : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         parseCarSpec();
         updateScoreDashboard(scoredashboardColumns, 30);
