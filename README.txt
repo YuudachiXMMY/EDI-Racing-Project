@@ -1,15 +1,20 @@
 # Build Updates
-Demo build with finalized Design:
-- Change Score Dashboard Ranking based on Time arrived at Checkpoints
-- Improve Screen
+Demo Build with more Events
+- Add a total of 7 Button Events
 - Updated Hotkeys : Dashboard Menu `Tab` and Pause `P`
 - Add Hotkeys : `H` Toggle Ranking Dashboard
+
+# Dev Updates
+- Fixed Event Trigger not Detectable (commit: 79fa540)
+- Improve Event Triggering Algorithm
+- Improve Screen
+- Change Score Dashboard Ranking based on Time arrived at Checkpoints
 
 build from https://github.com/YuudachiXMMY/Diversity-Vehicle-Project/commit/
 
 ---------------------------------------------------------------------------------------------------
 
-# Build Readme
+# [README.txt]
 
 ### 【Basic Camera Movement】
 [1] Free Move from current position (Default)
@@ -28,10 +33,50 @@ build from https://github.com/YuudachiXMMY/Diversity-Vehicle-Project/commit/
 
 ### 【Event Buttons】
 
-#### Event-1
+### Event-1 (Enter an Integer)
+Team names longer than entered Integer will reduce speed within 2 seconds.
+
+- Enter `length`  will `speed - 20` for `2` Time Unit.
+`[length] : Any Integer`
+
+
+### Event-2 (Enter a Color)
+Selected Car Color will increase speed within 2 seconds.
+
+- Enter `color`  will `speed + 20` for `2` Time Unit.
+`[color] : yellow || black || orange || blue || purple || red`
+
+
+### Event-3 (Enter a Color)
+Selected Car Color will reduce speed within 2 seconds.
+
+- Enter `color`  will `speed - 20` for `2` Time Unit.
+`[color] : yellow || black || orange || blue || purple || red`
+
+
+### Event-4
+Cars equipped with Facial Recognition and Fingerprint Detection will increase speed within 2 seconds.
+
 - Car with `functionList` will `speed + 20` for `2` Time Unit.
 `[functionList] : FacialRecognition || FingerprintDetection`
 
-#### Event-2 (Enter a Color)
-- Enter `color`  will `speed - 20` for `4` Time Unit.
-`[color] : yellow || black || orange || blue || purple || red`
+
+### Event-5
+Cars that are equipped with Facial Recognition and Fingerprint Detection will reduce speed within 2 seconds.
+
+- Car with `functionList` will `speed - 20` for `2` Time Unit.
+`[functionList] : FacialRecognition || FingerprintDetection`
+
+
+### Event-6 (Snow Event) - Currently NOT AVAILBE
+Cars NOT Equiped with Winter Tire will reduce speed during the event.
+
+- Car without `functionList` will `speed - 20` for `SNOW`.
+`[functionList] : WinterTire`
+
+
+### Event-7 (Night Event) - Currently NOT AVAILBE
+Cars Equiped with Assisted Night Vision will increase speed during the event.
+
+- Car with `functionList` will `speed + 20` for `NIGHT`.
+`[functionList] : AssistedNightVision`

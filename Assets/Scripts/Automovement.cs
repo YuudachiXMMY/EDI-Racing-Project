@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,28 +13,25 @@ public class Automovement : MonoBehaviour
     private int targetsRound;
     private int targetsTotalCount;
 
-    private float range = 20.0f;
-    private float distanceBetweenTarget;
-
     private carSpec carSpecification;
 
     private float TravelingTimer = 0.0f;
     public float DashboardTime = 0.0f;
 
+    // speedEvents = [ {{"addSpeed" : float}, {"triggeredTime" : float}, {"waitTime" : float}} ]
+    private List<Dictionary<string, float>> speedEvents = new List<Dictionary<string, float>>();
+    private int speedEventsCounter = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        targetsCounter = 0;
-        targetsRound = 0;
-        targetsTotalCount = 0;
-        //distanceBetweenTarget = Vector3.Distance(transform.position, targets[targetsCounter].transform.position);
-
         carSpecification = this.GetComponent<carSpec>();
     }
 
     private void FixedUpdate()
     {
         updateTimes();
+        checkSpeedEvents();
     }
 
     // Update is called once per frame
@@ -43,13 +41,6 @@ public class Automovement : MonoBehaviour
         navMeshAgent.angularSpeed = carSpecification.automoveAngularSpeed;
         navMeshAgent.acceleration = carSpecification.automoveAcceleration;
         navMeshAgent.SetDestination(targets[targetsCounter].position);
-
-        distanceBetweenTarget = Vector3.Distance(this.transform.position, targets[targetsCounter].position);
-
-        if (distanceBetweenTarget < range)
-        {
-            updateNavMeshAgent();
-        }
     }
 
 
@@ -61,6 +52,17 @@ public class Automovement : MonoBehaviour
     {
         DashboardTime = 0;
         updateNavMeshAgent(true);
+    }
+
+    public void triggerSpeedEvent(float addSpeed, float waitTime)
+    {
+        carSpecification.speed = carSpecification.speed + addSpeed;
+        Dictionary<string, float> newEvent = new Dictionary<string, float>();
+        newEvent.Add("addSpeed", addSpeed);
+        newEvent.Add("triggeredTime", TravelingTimer);
+        newEvent.Add("waitTime", waitTime);
+        speedEvents.Add(newEvent);
+        speedEventsCounter++;
     }
 
     /// Private Methods
@@ -85,5 +87,19 @@ public class Automovement : MonoBehaviour
         TravelingTimer += Time.deltaTime;
         DashboardTime += Time.deltaTime;
         carSpecification.automoveRankedTime = DashboardTime;
+    }
+
+    // Check if the Speed Events need to be reset,
+    // if Yes, reset the speed by minusing the added speed.
+    private void checkSpeedEvents()
+    {
+        foreach (Dictionary<string, float> speedEvent in speedEvents.ToList())
+        {
+            if (speedEvent["waitTime"] + speedEvent["triggeredTime"] < TravelingTimer)
+            {
+                carSpecification.speed -= speedEvent["addSpeed"];
+                speedEvents.Remove(speedEvent);
+            }
+        }
     }
 }

@@ -71,6 +71,11 @@ public class hotKeys : MonoBehaviour
 
     }
 
+    public bool isPaused()
+    {
+        return gamePause;
+    }
+
     private void toggleGamePause()
     {
         if (gamePause)

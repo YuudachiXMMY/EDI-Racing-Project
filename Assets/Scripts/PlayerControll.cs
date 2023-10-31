@@ -29,8 +29,13 @@ public class PlayerControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         // Fixed Camera Hotkeys
-        switchCameraPosition();
+        GameObject gameManager = GameObject.FindGameObjectWithTag("Respawn");
+        if (!gameManager.GetComponent<hotKeys>().isPaused())
+        {
+            switchCameraPosition();
+        }
 
         if (!fixedCamera && !hotKeys.gamePause)
         {

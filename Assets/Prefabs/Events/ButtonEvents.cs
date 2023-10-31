@@ -2,92 +2,86 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using UnityEngine.Windows;
 
 public class ButtonEvents : MonoBehaviour
 {
-
-    private GameObject[] event1UpdateList;
-    private int event1UpdateListIndex;
-    private GameObject[] event2UpdateList;
-    private int event2UpdateListIndex;
-
-    private float timer = 0.0f;
-    private float event1Time = 0.0f;
-    private float event2Time = 0.0f;
     private float waitTime = 2.0f;
+    private GameObject[] cars;
 
-    private bool event1Triggered = false;
-    private bool event2Triggered = false;
-
-    void Start()
+    private void Update()
     {
-        event1UpdateList = new GameObject[100];
-        event1UpdateListIndex = -1;
-        event2UpdateList = new GameObject[100];
-        event2UpdateListIndex = -1;
+       cars  = GameObject.FindGameObjectsWithTag("Cars");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Event_1(string input)
     {
-        timer += Time.deltaTime;
-        if (event1Triggered && timer > event1Time + waitTime)
-        {
-            while (event1UpdateListIndex != -1)
-            {
-                event1UpdateList[event1UpdateListIndex].GetComponent<carSpec>().speed = event1UpdateList[event1UpdateListIndex].GetComponent<carSpec>().automoveSpeed;
-                event1UpdateListIndex--;
-            }
-            event1Triggered = false;
-        }
-        if (event2Triggered && timer > event2Time + waitTime)
-        {
-            while (event2UpdateListIndex != -1)
-            {
-                event2UpdateList[event2UpdateListIndex].GetComponent<carSpec>().speed = event2UpdateList[event2UpdateListIndex].GetComponent<carSpec>().automoveSpeed;
-                event2UpdateListIndex--;
-            }
-            event2Triggered = false;
-        }
-    }
-
-    public void Event_1()
-    {
-        GameObject[] cars = GameObject.FindGameObjectsWithTag("Cars");
-
         foreach (GameObject car in cars)
         {
             carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
-            if (System.Array.IndexOf(carSpecification.functionList, "FacialRecognition") != -1 ||
-                System.Array.IndexOf(carSpecification.functionList, "FingerprintDetection") != -1)
+            Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
+            if (carSpecification.groupName.Length > Int32.Parse(input))
             {
-                carSpecification.speed = carSpecification.speed + 20;
-                event1Time = timer;
-                event1UpdateListIndex++;
-                event1UpdateList[event1UpdateListIndex] = car.gameObject;
-                event1Triggered = true;
+                carAutomovement.triggerSpeedEvent(-20, waitTime);
             }
         }
+
+        GameObject.Find("Event-1").GetComponent<TMP_InputField>().text = "";
     }
 
     public void Event_2(string input)
-    { 
-        GameObject[] cars = GameObject.FindGameObjectsWithTag("Cars");
+    {
+        changeCarSpeedByColor(input, 20);
+        GameObject.Find("Event-2").GetComponent<TMP_InputField>().text = "";
+    }
 
+    public void Event_3(string input)
+    {
+        changeCarSpeedByColor(input, -20);
+        GameObject.Find("Event-3").GetComponent<TMP_InputField>().text = "";
+    }
+
+    public void Event_4()
+    {
         foreach (GameObject car in cars)
         {
             carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
-            if (carSpecification.color == input)
+            Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
+            if (System.Array.IndexOf(carSpecification.functionList, "FacialRecognition") != -1 ||
+                System.Array.IndexOf(carSpecification.functionList, "FingerprintDetection") != -1)
             {
-                carSpecification.speed = carSpecification.speed - 20;
-                event2Time = timer;
-                event2UpdateListIndex++;
-                event2UpdateList[event2UpdateListIndex] = car.gameObject;
-                event2Triggered = true;
+                carAutomovement.triggerSpeedEvent(20, waitTime);
             }
         }
+    }
 
-        GameObject.Find("Event-2").GetComponent<TMP_InputField>().text = "";
+    public void Event_5()
+    {
+        foreach (GameObject car in cars)
+        {
+            carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
+            Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
+            if (System.Array.IndexOf(carSpecification.functionList, "FacialRecognition") != -1 ||
+                System.Array.IndexOf(carSpecification.functionList, "FingerprintDetection") != -1)
+            {
+                carAutomovement.triggerSpeedEvent(-20, waitTime);
+            }
+        }
+    }
+
+    public void Event_7()
+    {
+        foreach (GameObject car in cars)
+        {
+            carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
+            Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
+            if (System.Array.IndexOf(carSpecification.functionList, "FacialRecognition") != -1 ||
+                System.Array.IndexOf(carSpecification.functionList, "FingerprintDetection") != -1)
+            {
+                carAutomovement.triggerSpeedEvent(20, waitTime);
+            }
+        }
     }
 
     //FacialRecognition
@@ -96,4 +90,19 @@ public class ButtonEvents : MonoBehaviour
     //FingerprintDetection
     //Anti-TheftSystem
     //PedestrianDetection
+
+
+
+    private void changeCarSpeedByColor(string input, float addSpeed)
+    {
+        foreach (GameObject car in cars)
+        {
+            carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
+            Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
+            if (carSpecification.color == input)
+            {
+                carAutomovement.triggerSpeedEvent(addSpeed, waitTime);
+            }
+        }
+    }
 }
