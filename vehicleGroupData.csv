@@ -1,60 +1,60 @@
-﻿1,1,VoiceAssistant/PedestrianDetection
-2,0,FacialRecognition/VoiceAssistant/PedestrianDetection
-3,3,FacialRecognition/VoiceAssistant/PedestrianDetection
-4,4,FacialRecognition/VoiceAssistant/PedestrianDetection
-5,7,VoiceAssistant/PedestrianDetection
-6,0,VoiceAssistant/PedestrianDetection
-7,1,VoiceAssistant/PedestrianDetection
-8,2,VoiceAssistant/PedestrianDetection
-9,3,VoiceAssistant/PedestrianDetection
-10,4,VoiceAssistant/PedestrianDetection
-11,7,VoiceAssistant/PedestrianDetection
-12,5,VoiceAssistant/PedestrianDetection
-13,6,VoiceAssistant/PedestrianDetection
-14,6,FacialRecognition/VoiceAssistant/PedestrianDetection
-15,2,FacialRecognition/VoiceAssistant/PedestrianDetection
-16,1,VoiceAssistant/PedestrianDetection
-17,0,FacialRecognition/VoiceAssistant/PedestrianDetection
-18,3,FacialRecognition/VoiceAssistant/PedestrianDetection
-19,4,FacialRecognition/VoiceAssistant/PedestrianDetection
-20,7,VoiceAssistant/PedestrianDetection
-21,0,VoiceAssistant/PedestrianDetection
-22,1,VoiceAssistant/PedestrianDetection
-23,2,VoiceAssistant/PedestrianDetection
-24,3,VoiceAssistant/PedestrianDetection
-25,4,VoiceAssistant/PedestrianDetection
-26,7,VoiceAssistant/PedestrianDetection
-27,5,VoiceAssistant/PedestrianDetection
-28,6,VoiceAssistant/PedestrianDetection
-29,6,FacialRecognition/VoiceAssistant/PedestrianDetection
-30,2,FacialRecognition/VoiceAssistant/PedestrianDetection
-31,1,VoiceAssistant/PedestrianDetection
-32,2,VoiceAssistant/PedestrianDetection
-33,3,VoiceAssistant/PedestrianDetection
-34,4,VoiceAssistant/PedestrianDetection
-35,7,VoiceAssistant/PedestrianDetection
-36,5,VoiceAssistant/PedestrianDetection
-37,6,VoiceAssistant/PedestrianDetection
-38,6,FacialRecognition/VoiceAssistant/PedestrianDetection
-39,2,FacialRecognition/VoiceAssistant/PedestrianDetection
-40,1,VoiceAssistant/PedestrianDetection
-41,0,FacialRecognition/VoiceAssistant/PedestrianDetection
-42,3,FacialRecognition/VoiceAssistant/PedestrianDetection
-43,4,FacialRecognition/VoiceAssistant/PedestrianDetection
-44,7,VoiceAssistant/PedestrianDetection
-45,0,VoiceAssistant/PedestrianDetection
-46,5,VoiceAssistant/PedestrianDetection
-47,2,VoiceAssistant/PedestrianDetection
-48,3,VoiceAssistant/PedestrianDetection
-49,4,VoiceAssistant/PedestrianDetection
-50,7,VoiceAssistant/PedestrianDetection
-51,5,VoiceAssistant/PedestrianDetection
-52,6,VoiceAssistant/PedestrianDetection
-53,6,FacialRecognition/VoiceAssistant/PedestrianDetection
-54,2,FacialRecognition/VoiceAssistant/PedestrianDetection
-55,5,VoiceAssistant/PedestrianDetection
-56,5,VoiceAssistant/PedestrianDetection
-57,0,FacialRecognition/VoiceAssistant/PedestrianDetection
-58,3,FacialRecognition/VoiceAssistant/PedestrianDetection
-59,4,FacialRecognition/VoiceAssistant/PedestrianDetection
-60,7,VoiceAssistant/PedestrianDetection
+﻿1,1,Facial Recognition/Tracking/Assisted Night Vision
+2,0,Nitrogen Accelerator/HEV/Proactive Safety Control
+3,3,Winter Tires/Assisted Night Vision/Inter-car Communication
+4,4,Winter Tires/HEV
+5,7,Assisted Night Vision/Inter-car Communication
+6,0,Facial Recognition/Tracking/Assisted Night Vision
+7,1,Nitrogen Accelerator/HEV/Proactive Safety Control
+8,2,Winter Tires/Assisted Night Vision/Inter-car Communication
+9,3,Winter Tires/HEV
+10,4,Assisted Night Vision/Inter-car Communication
+11,7,Facial Recognition/Tracking/Assisted Night Vision
+12,5,Nitrogen Accelerator/HEV/Proactive Safety Control
+13,6,Winter Tires/Assisted Night Vision/Inter-car Communication
+14,6,Winter Tires/HEV
+15,2,Assisted Night Vision/Inter-car Communication
+16,1,Facial Recognition/Tracking/Assisted Night Vision
+17,0,Nitrogen Accelerator/HEV/Proactive Safety Control
+18,3,Winter Tires/Assisted Night Vision/Inter-car Communication
+19,4,Winter Tires/HEV
+20,7,Assisted Night Vision/Inter-car Communication
+21,0,Facial Recognition/Tracking/Assisted Night Vision
+22,1,Nitrogen Accelerator/HEV/Proactive Safety Control
+23,2,Winter Tires/Assisted Night Vision/Inter-car Communication
+24,3,Winter Tires/HEV
+25,4,Assisted Night Vision/Inter-car Communication
+26,7,Facial Recognition/Tracking/Assisted Night Vision
+27,5,Nitrogen Accelerator/HEV/Proactive Safety Control
+28,6,Winter Tires/Assisted Night Vision/Inter-car Communication
+29,6,Winter Tires/HEV
+30,2,Assisted Night Vision/Inter-car Communication
+31,1,Facial Recognition/Tracking/Assisted Night Vision
+32,2,Nitrogen Accelerator/HEV/Proactive Safety Control
+33,3,Winter Tires/Assisted Night Vision/Inter-car Communication
+34,4,Winter Tires/HEV
+35,7,Assisted Night Vision/Inter-car Communication
+36,5,Facial Recognition/Tracking/Assisted Night Vision
+37,6,Nitrogen Accelerator/HEV/Proactive Safety Control
+38,6,Winter Tires/Assisted Night Vision/Inter-car Communication
+39,2,Winter Tires/HEV
+40,1,Assisted Night Vision/Inter-car Communication
+41,0,Facial Recognition/Tracking/Assisted Night Vision
+42,3,Nitrogen Accelerator/HEV/Proactive Safety Control
+43,4,Winter Tires/Assisted Night Vision/Inter-car Communication
+44,7,Winter Tires/HEV
+45,0,Assisted Night Vision/Inter-car Communication
+46,5,Facial Recognition/Tracking/Assisted Night Vision
+47,2,Nitrogen Accelerator/HEV/Proactive Safety Control
+48,3,Winter Tires/Assisted Night Vision/Inter-car Communication
+49,4,Winter Tires/HEV
+50,7,Assisted Night Vision/Inter-car Communication
+51,5,Facial Recognition/Tracking/Assisted Night Vision
+52,6,Nitrogen Accelerator/HEV/Proactive Safety Control
+53,6,Winter Tires/Assisted Night Vision/Inter-car Communication
+54,2,Winter Tires/HEV
+55,5,Assisted Night Vision/Inter-car Communication
+56,5,Facial Recognition/Tracking/Assisted Night Vision
+57,0,Nitrogen Accelerator/HEV/Proactive Safety Control
+58,3,Winter Tires/Assisted Night Vision/Inter-car Communication
+59,4,Winter Tires/HEV
+60,7,Assisted Night Vision/Inter-car Communication

@@ -84,9 +84,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34bc420594fa03e4ba270598b8086b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groupName: 40
+  groupName: 57
   model: 0
-  color: yellow
+  color: purple
   rbMass: 1500
   rbAngularDrag: 120
   speed: 30
@@ -98,6 +98,7 @@ MonoBehaviour:
   automoveRound: 0
   automoveTargetsTotalCount: 0
   functionList:
+  - FacialRecognition
   - VoiceAssistant
   - PedestrianDetection
 --- !u!64 &-8850014148017458063

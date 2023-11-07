@@ -13,12 +13,23 @@ public class ButtonEvents : MonoBehaviour
     public GameObject ltObj;
     private Light lt;
 
-    private float waitTime = 2.0f;
+    private float waitTime = 5.0f;
     private GameObject[] cars;
 
     private GameObject snow;
     private bool event6_triggered = false;
     private bool event7_triggered = false;
+
+    private Dictionary<int, string> carFunctionDictionary = new Dictionary<int, string>() {
+        {1, "Facial Recognition" },
+        {2, "Inter-car Communication" },
+        {3, "Tracking" },
+        {4, "Assisted Night Vision" },
+        {5, "Winter Tires" },
+        {6, "Nitrogen Accelerator" },
+        {7, "HEV" },
+        {8, "Proactive Safety Control" }
+    };
 
     private void Start()
     {
@@ -38,10 +49,8 @@ public class ButtonEvents : MonoBehaviour
         {
             carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
             Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
-            if (carSpecification.groupName.Length > Int32.Parse(input))
-            {
-                carAutomovement.triggerSpeedEvent(-20, waitTime);
-            }
+            bool flag = carSpecification.groupName.Length > Int32.Parse(input);
+            detectTriggerSpeedEvent(flag, -20, carAutomovement);
         }
 
         GameObject.Find("Event-1").GetComponent<TMP_InputField>().text = "";
@@ -59,32 +68,16 @@ public class ButtonEvents : MonoBehaviour
         GameObject.Find("Event-3").GetComponent<TMP_InputField>().text = "";
     }
 
-    public void Event_4()
+    public void Event_4(string input)
     {
-        foreach (GameObject car in cars)
-        {
-            carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
-            Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
-            if (System.Array.IndexOf(carSpecification.functionList, "FacialRecognition") != -1 ||
-                System.Array.IndexOf(carSpecification.functionList, "FingerprintDetection") != -1)
-            {
-                carAutomovement.triggerSpeedEvent(20, waitTime);
-            }
-        }
+        changeCarSpeedByFunction(input, 20);
+        GameObject.Find("Event-4").GetComponent<TMP_InputField>().text = "";
     }
 
-    public void Event_5()
+    public void Event_5(string input)
     {
-        foreach (GameObject car in cars)
-        {
-            carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
-            Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
-            if (System.Array.IndexOf(carSpecification.functionList, "FacialRecognition") != -1 ||
-                System.Array.IndexOf(carSpecification.functionList, "FingerprintDetection") != -1)
-            {
-                carAutomovement.triggerSpeedEvent(-20, waitTime);
-            }
-        }
+        changeCarSpeedByFunction(input, -20);
+        GameObject.Find("Event-5").GetComponent<TMP_InputField>().text = "";
     }
 
     public void Event_6()
@@ -100,10 +93,8 @@ public class ButtonEvents : MonoBehaviour
             {
                 carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
                 Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
-                if (System.Array.IndexOf(carSpecification.functionList, "WinterTire") < 0)
-                {
-                    carAutomovement.triggerSpeedEvent(-19, waitTime);
-                }
+                bool flag = System.Array.IndexOf(carSpecification.functionList, "Winter Tires") < 0;
+                detectTriggerSpeedEvent(flag, -10, carAutomovement);
             }
         } else
         {
@@ -122,15 +113,17 @@ public class ButtonEvents : MonoBehaviour
 
             lt.color -= UnityEngine.Color.white * 100;
 
-            foreach (GameObject car in cars)
-            {
-                carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
-                Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
-                if (System.Array.IndexOf(carSpecification.functionList, "AssistedNightVision") != -1)
-                {
-                    carAutomovement.triggerSpeedEvent(10, waitTime);
-                }
-            }
+            //foreach (GameObject car in cars)
+            //{
+            //    carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
+            //    Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
+            //    if (System.Array.IndexOf(carSpecification.functionList, "Assisted Night Vision") != -1)
+            //    {
+            //        carAutomovement.triggerSpeedEvent(10, waitTime);
+            //    }
+            //}
+            changeCarSpeedByFunction("4", 10);
+
         }
         else
         {
@@ -155,10 +148,26 @@ public class ButtonEvents : MonoBehaviour
         {
             carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
             Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
-            if (carSpecification.color == input)
-            {
-                carAutomovement.triggerSpeedEvent(addSpeed, waitTime);
-            }
+            bool flag = carSpecification.color == input;
+            detectTriggerSpeedEvent(flag, addSpeed, carAutomovement);
+        }
+    }
+    private void changeCarSpeedByFunction(string input, float addSpeed)
+    {
+        foreach (GameObject car in cars)
+        {
+            carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
+            Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
+            bool flag = System.Array.IndexOf(carSpecification.functionList, carFunctionDictionary[Int32.Parse(input)]) != -1;
+            detectTriggerSpeedEvent(flag, addSpeed, carAutomovement);
+        }
+    }
+
+    private void detectTriggerSpeedEvent(bool flag, float addSpeed, Automovement carAutomovement)
+    {
+        if (flag)
+        {
+            carAutomovement.triggerSpeedEvent(addSpeed, waitTime);
         }
     }
 }
