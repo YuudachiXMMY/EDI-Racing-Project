@@ -12,6 +12,8 @@ public class ScoreDashboard : MonoBehaviour
 
     private Dictionary<string, carSpec> carsData;
 
+    TMPro.TextMeshProUGUI[] compTextTMP = new TMPro.TextMeshProUGUI[2]; // TMP Array from Game Objects' Components
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,7 @@ public class ScoreDashboard : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
         parseCarSpec();
         updateScoreDashboard(scoredashboardColumns, 30);
@@ -50,19 +52,27 @@ public class ScoreDashboard : MonoBehaviour
                                     //.OrderByDescending(pair => pair.Value.automoveRound);
         int scoredashboardIndex = 0;
         int counts = 0;
-        TMPro.TextMeshProUGUI mTextTMP = columns[scoredashboardIndex].GetComponent<TMPro.TextMeshProUGUI>();
-        mTextTMP.text = "";
+        TMPro.TextMeshProUGUI[] mTextTMP = new TMPro.TextMeshProUGUI[2]; // Temporary TMP Array
+
+        // Initializing
+        compTextTMP[0] = columns[0].GetComponent<TMPro.TextMeshProUGUI>();
+        compTextTMP[1] = columns[1].GetComponent<TMPro.TextMeshProUGUI>();
+        mTextTMP[0] = new TMPro.TextMeshProUGUI();
+        mTextTMP[1] = new TMPro.TextMeshProUGUI();
+
         foreach (var pair in sortedCarsData)
         {
-            mTextTMP.text += generateScorboardTextFormat(counts, pair.Key, pair.Value.automoveRound, pair.Value.automoveRankedTime);
+            mTextTMP[scoredashboardIndex].text += generateScorboardTextFormat(counts, pair.Key, pair.Value.automoveRound, pair.Value.automoveRankedTime);
             counts++;
-            if (counts % splitNum == 0)
+            if (counts % (sortedCarsData.Count() / 2) == 0)
             {
                 scoredashboardIndex++;
-                mTextTMP = columns[scoredashboardIndex].GetComponent<TMPro.TextMeshProUGUI>();
-                mTextTMP.text = "";
             }
         }
+
+        // Updating Game Objects' TMP Components
+        compTextTMP[0].text = mTextTMP[0].text;
+        compTextTMP[1].text = mTextTMP[1].text;
     }
 
     // return String : Score Dashboard Content

@@ -86,7 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groupName: 57
   model: 0
-  color: purple
+  color: orange
   rbMass: 1500
   rbAngularDrag: 120
   speed: 30
