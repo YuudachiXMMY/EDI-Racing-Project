@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 48cd618cd02bb034492a2960c2fc7ddd, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 48cd618cd02bb034492a2960c2fc7ddd, type: 3}
       propertyPath: m_Name
       value: Car-5
@@ -84,13 +88,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34bc420594fa03e4ba270598b8086b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groupName: 59
-  model: 4
+  groupName: 45
+  model: 5
   color: white
   rbMass: 1500
   rbAngularDrag: 120
-  speed: 30
-  automoveSpeed: 30
+  speed: 45
+  automoveSpeed: 45
   automoveAngularSpeed: 350
   automoveAcceleration: 100
   automoveBaseOffset: 1.1
@@ -98,9 +102,9 @@ MonoBehaviour:
   automoveRound: 0
   automoveTargetsTotalCount: 0
   functionList:
-  - FacialRecognition
-  - VoiceAssistant
-  - PedestrianDetection
+  - male
+  - glasses
+  - language
 --- !u!64 &-5773442765550937873
 MeshCollider:
   m_ObjectHideFlags: 0

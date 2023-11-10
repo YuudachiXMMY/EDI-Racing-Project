@@ -21,24 +21,29 @@ public class ButtonEvents : MonoBehaviour
     private bool event7_triggered = false;
 
     private Dictionary<int, string> carFunctionDictionary = new Dictionary<int, string>() {
-        {1, "Facial Recognition" },
-        {2, "Inter-car Communication" },
-        {3, "Tracking" },
-        {4, "Assisted Night Vision" },
-        {5, "Winter Tires" },
-        {6, "Nitrogen Accelerator" },
-        {7, "HEV" },
-        {8, "Proactive Safety Control" }
+        {1, "male" },
+        {2, "glasses" },
+        {3, "facerecog" },
+        {4, "language" },
+        {5, "password" },
+        {6, "distance" }
     };
+
+    public Material material_Day1;
+    public Material material_Snow1;
+    public Material material_Night1;
 
     private void Start()
     {
         lt = ltObj.GetComponent<Light>();
         snow = GameObject.Find("SNOW");
         snow.SetActive(false);
+
+        RenderSettings.skybox = material_Day1;
+        RenderSettings.ambientIntensity = 1;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
        cars  = GameObject.FindGameObjectsWithTag("Cars");
     }
@@ -53,31 +58,31 @@ public class ButtonEvents : MonoBehaviour
             detectTriggerSpeedEvent(flag, -20, carAutomovement);
         }
 
-        GameObject.Find("Event-1").GetComponent<TMP_InputField>().text = "";
+        ResetInputField("Event-1");
     }
 
     public void Event_2(string input)
     {
         changeCarSpeedByColor(input, 20);
-        GameObject.Find("Event-2").GetComponent<TMP_InputField>().text = "";
+        ResetInputField("Event-2");
     }
 
     public void Event_3(string input)
     {
         changeCarSpeedByColor(input, -20);
-        GameObject.Find("Event-3").GetComponent<TMP_InputField>().text = "";
+        ResetInputField("Event-3");
     }
 
     public void Event_4(string input)
     {
         changeCarSpeedByFunction(input, 20);
-        GameObject.Find("Event-4").GetComponent<TMP_InputField>().text = "";
+        ResetInputField("Event-4");
     }
 
     public void Event_5(string input)
     {
         changeCarSpeedByFunction(input, -20);
-        GameObject.Find("Event-5").GetComponent<TMP_InputField>().text = "";
+        ResetInputField("Event-5");
     }
 
     public void Event_6()
@@ -87,21 +92,28 @@ public class ButtonEvents : MonoBehaviour
             event6_triggered = true;
             snow.SetActive(event6_triggered);
 
-            lt.color -= UnityEngine.Color.white * 20;
+            RenderSettings.skybox = material_Snow1;
+            RenderSettings.ambientIntensity = 0.55f;
 
-            foreach (GameObject car in cars)
-            {
-                carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
-                Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
-                bool flag = System.Array.IndexOf(carSpecification.functionList, "Winter Tires") < 0;
-                detectTriggerSpeedEvent(flag, -10, carAutomovement);
-            }
+            //lt.color -= UnityEngine.Color.white * 20;
+
+            //// Change Car Speed during the event
+            //foreach (GameObject car in cars)
+            //{
+            //    carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
+            //    Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
+            //    bool flag = System.Array.IndexOf(carSpecification.functionList, "Winter Tires") < 0;
+            //    detectTriggerSpeedEvent(flag, -10, carAutomovement);
+            //}
         } else
         {
             event6_triggered = false;
             snow.SetActive(event6_triggered);
 
-            lt.color += UnityEngine.Color.white * 20;
+            RenderSettings.skybox = material_Day1;
+            RenderSettings.ambientIntensity = 1;
+
+            //lt.color += UnityEngine.Color.white * 20;
         }
     }
 
@@ -111,36 +123,40 @@ public class ButtonEvents : MonoBehaviour
         {
             event7_triggered = true;
 
-            lt.color -= UnityEngine.Color.white * 100;
+            RenderSettings.skybox = material_Night1;
+            RenderSettings.ambientIntensity = 0.2f;
 
-            //foreach (GameObject car in cars)
-            //{
-            //    carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
-            //    Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
-            //    if (System.Array.IndexOf(carSpecification.functionList, "Assisted Night Vision") != -1)
-            //    {
-            //        carAutomovement.triggerSpeedEvent(10, waitTime);
-            //    }
-            //}
-            changeCarSpeedByFunction("4", 10);
+            //lt.color -= UnityEngine.Color.white * 100;
+
+            //// Change Car Speed during the event
+            ////foreach (GameObject car in cars)
+            ////{
+            ////    carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
+            ////    Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
+            ////    if (System.Array.IndexOf(carSpecification.functionList, "Assisted Night Vision") != -1)
+            ////    {
+            ////        carAutomovement.triggerSpeedEvent(10, waitTime);
+            ////    }
+            ////}
+            //changeCarSpeedByFunction("4", 10);
 
         }
         else
         {
             event7_triggered = false;
 
-            lt.color += UnityEngine.Color.white * 100;
+            RenderSettings.skybox = material_Day1;
+            RenderSettings.ambientIntensity = 1;
+
+            //lt.color += UnityEngine.Color.white * 100;
         }
     }
 
-    //FacialRecognition
-    //VoiceAssistant
-    //AutomaticEmergencyResponseSystem
-    //FingerprintDetection
-    //Anti-TheftSystem
-    //PedestrianDetection
 
-
+    private void ResetInputField(string GameObjectName)
+    {
+        GameObject.Find(GameObjectName).GetComponent<TMP_InputField>().text = "";
+    }
 
     private void changeCarSpeedByColor(string input, float addSpeed)
     {

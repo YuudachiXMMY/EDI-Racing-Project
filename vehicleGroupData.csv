@@ -1,60 +1,48 @@
-﻿1,1,Facial Recognition/Tracking/Assisted Night Vision
-2,0,Nitrogen Accelerator/HEV/Proactive Safety Control
-3,3,Winter Tires/Assisted Night Vision/Inter-car Communication
-4,4,Winter Tires/HEV
-5,7,Assisted Night Vision/Inter-car Communication
-6,0,Facial Recognition/Tracking/Assisted Night Vision
-7,1,Nitrogen Accelerator/HEV/Proactive Safety Control
-8,2,Winter Tires/Assisted Night Vision/Inter-car Communication
-9,3,Winter Tires/HEV
-10,4,Assisted Night Vision/Inter-car Communication
-11,7,Facial Recognition/Tracking/Assisted Night Vision
-12,5,Nitrogen Accelerator/HEV/Proactive Safety Control
-13,6,Winter Tires/Assisted Night Vision/Inter-car Communication
-14,6,Winter Tires/HEV
-15,2,Assisted Night Vision/Inter-car Communication
-16,1,Facial Recognition/Tracking/Assisted Night Vision
-17,0,Nitrogen Accelerator/HEV/Proactive Safety Control
-18,3,Winter Tires/Assisted Night Vision/Inter-car Communication
-19,4,Winter Tires/HEV
-20,7,Assisted Night Vision/Inter-car Communication
-21,0,Facial Recognition/Tracking/Assisted Night Vision
-22,1,Nitrogen Accelerator/HEV/Proactive Safety Control
-23,2,Winter Tires/Assisted Night Vision/Inter-car Communication
-24,3,Winter Tires/HEV
-25,4,Assisted Night Vision/Inter-car Communication
-26,7,Facial Recognition/Tracking/Assisted Night Vision
-27,5,Nitrogen Accelerator/HEV/Proactive Safety Control
-28,6,Winter Tires/Assisted Night Vision/Inter-car Communication
-29,6,Winter Tires/HEV
-30,2,Assisted Night Vision/Inter-car Communication
-31,1,Facial Recognition/Tracking/Assisted Night Vision
-32,2,Nitrogen Accelerator/HEV/Proactive Safety Control
-33,3,Winter Tires/Assisted Night Vision/Inter-car Communication
-34,4,Winter Tires/HEV
-35,7,Assisted Night Vision/Inter-car Communication
-36,5,Facial Recognition/Tracking/Assisted Night Vision
-37,6,Nitrogen Accelerator/HEV/Proactive Safety Control
-38,6,Winter Tires/Assisted Night Vision/Inter-car Communication
-39,2,Winter Tires/HEV
-40,1,Assisted Night Vision/Inter-car Communication
-41,0,Facial Recognition/Tracking/Assisted Night Vision
-42,3,Nitrogen Accelerator/HEV/Proactive Safety Control
-43,4,Winter Tires/Assisted Night Vision/Inter-car Communication
-44,7,Winter Tires/HEV
-45,0,Assisted Night Vision/Inter-car Communication
-46,5,Facial Recognition/Tracking/Assisted Night Vision
-47,2,Nitrogen Accelerator/HEV/Proactive Safety Control
-48,3,Winter Tires/Assisted Night Vision/Inter-car Communication
-49,4,Winter Tires/HEV
-50,7,Assisted Night Vision/Inter-car Communication
-51,5,Facial Recognition/Tracking/Assisted Night Vision
-52,6,Nitrogen Accelerator/HEV/Proactive Safety Control
-53,6,Winter Tires/Assisted Night Vision/Inter-car Communication
-54,2,Winter Tires/HEV
-55,5,Assisted Night Vision/Inter-car Communication
-56,5,Facial Recognition/Tracking/Assisted Night Vision
-57,0,Nitrogen Accelerator/HEV/Proactive Safety Control
-58,3,Winter Tires/Assisted Night Vision/Inter-car Communication
-59,4,Winter Tires/HEV
-60,7,Assisted Night Vision/Inter-car Communication
+﻿1,1,male / glasses/ Language
+2,2,FACerecog/ distanCE/ PASSword
+3,3,male / glasses/ Language
+4,4,FACerecog/ distanCE/ PASSword
+5,5,male / glasses/ Language
+6,1,FACerecog/ distanCE/ PASSword
+7,2,male / glasses/ Language
+8,3,FACerecog/ distanCE/ PASSword
+9,4,male / glasses/ Language
+10,5,FACerecog/ distanCE/ PASSword
+11,1,male / glasses/ Language
+12,2,FACerecog/ distanCE/ PASSword
+13,3,male / glasses/ Language
+14,4,FACerecog/ distanCE/ PASSword
+15,5,male / glasses/ Language
+16,1,FACerecog/ distanCE/ PASSword
+17,2,male / glasses/ Language
+18,3,FACerecog/ distanCE/ PASSword
+19,4,male / glasses/ Language
+20,5,FACerecog/ distanCE/ PASSword
+21,1,male / glasses/ Language
+22,2,FACerecog/ distanCE/ PASSword
+23,3,male / glasses/ Language
+24,4,FACerecog/ distanCE/ PASSword
+25,5,male / glasses/ Language
+26,1,FACerecog/ distanCE/ PASSword
+27,2,male / glasses/ Language
+28,3,FACerecog/ distanCE/ PASSword
+29,4,male / glasses/ Language
+30,5,FACerecog/ distanCE/ PASSword
+31,1,male / glasses/ Language
+32,2,FACerecog/ distanCE/ PASSword
+33,3,male / glasses/ Language
+34,4,FACerecog/ distanCE/ PASSword
+35,5,male / glasses/ Language
+36,1,FACerecog/ distanCE/ PASSword
+37,2,male / glasses/ Language
+38,3,FACerecog/ distanCE/ PASSword
+39,4,male / glasses/ Language
+40,5,FACerecog/ distanCE/ PASSword
+41,1,male / glasses/ Language
+42,2,FACerecog/ distanCE/ PASSword
+43,3,male / glasses/ Language
+44,4,FACerecog/ distanCE/ PASSword
+45,5,male / glasses/ Language
+46,1,FACerecog/ distanCE/ PASSword
+47,2,male / glasses/ Language
+48,2,male / glasses/ Language

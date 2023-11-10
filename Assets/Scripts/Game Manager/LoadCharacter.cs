@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using TMPro;
 using System.IO;
+using System.Linq;
 
 public class LoadCharacter : MonoBehaviour
 {
@@ -42,8 +43,8 @@ public class LoadCharacter : MonoBehaviour
             }
             var columns = lines.Split(",");
             string characterName = columns[0].ToString();
-            int selectedCharacter = int.Parse(columns[1]);
-            string[] funcList = columns[2].Split("/"); //new string[] { columns[2].SToString() };
+            int selectedCharacter = int.Parse(columns[1]) - 1;
+            string[] funcList = columns[2].Split("/").Select(func => func.Trim().ToLower()).ToArray();
             initializePlayer(characterPrefabs[selectedCharacter], characterName, funcList);
         }
     }
@@ -62,8 +63,9 @@ public class LoadCharacter : MonoBehaviour
         automoveAcceleration = carSpecification.automoveAcceleration;
         automoveBaseOffset = carSpecification.automoveBaseOffset;
 
-        randomUnitVector = new Vector3(Random.Range(-4f, 4f), 0, Random.Range(-1f, 1f));
+        randomUnitVector = new Vector3(Random.Range(-7f, 7f), 0, Random.Range(-1.2f, 1.2f));
         player = Instantiate(character, spawnPoint.position + 5 * randomUnitVector, spawnPoint.rotation) as GameObject;
+        player.transform.localScale *= 2.5f;
         player.name = characterName;
 
         //MeshCollider playerMS = player.AddComponent<MeshCollider>();

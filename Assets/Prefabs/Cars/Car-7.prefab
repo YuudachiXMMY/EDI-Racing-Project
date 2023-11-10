@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f273cad24519b24ebcfa09ec662854d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1f273cad24519b24ebcfa09ec662854d, type: 3}
       propertyPath: m_Name
       value: Car-7
@@ -85,12 +89,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupName: 53
-  model: 6
+  model: 7
   color: green
   rbMass: 1500
   rbAngularDrag: 120
-  speed: 30
-  automoveSpeed: 30
+  speed: 45
+  automoveSpeed: 45
   automoveAngularSpeed: 350
   automoveAcceleration: 100
   automoveBaseOffset: 0.5
@@ -98,9 +102,9 @@ MonoBehaviour:
   automoveRound: 0
   automoveTargetsTotalCount: 0
   functionList:
-  - FacialRecognition
-  - VoiceAssistant
-  - PedestrianDetection
+  - winter tires
+  - assisted night vision
+  - inter-car communication
 --- !u!64 &-3743685035188515460
 MeshCollider:
   m_ObjectHideFlags: 0
