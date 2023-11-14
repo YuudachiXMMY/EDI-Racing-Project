@@ -93,7 +93,7 @@ public class PlayerControll : MonoBehaviour
         {
             playerCamera.transform.localRotation = Quaternion.Euler(35, 0, 0);
             transform.rotation = Quaternion.Euler(0, -160, 0);
-            transform.position = new Vector3(-25f, 18f, -12f);
+            transform.position = new Vector3(-70f, 30f, 0f);
             //playerCamera.transform.localRotation = Quaternion.Euler(35, 0, 0);
             //transform.rotation = Quaternion.Euler(0, -160, 0);
             //transform.position = new Vector3(1.8f, 35f, 6f);
@@ -153,7 +153,7 @@ public class PlayerControll : MonoBehaviour
         {
             playerCamera.transform.localRotation = Quaternion.Euler(90, 0, 0);
             transform.rotation = Quaternion.Euler(0, -180, 0);
-            transform.position = new Vector3(2f, 147.5f, -160f);
+            transform.position = new Vector3(2f, 175f, -160f);
         }
     }
 }

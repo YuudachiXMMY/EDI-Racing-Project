@@ -11,9 +11,12 @@ public class ScoreDashboard : MonoBehaviour
     public GameObject[] scoredashboardColumns;
     public GameObject[] generalScoredashboardColumns;
 
+    public GameObject backgroundCanvas;
+
     private Dictionary<string, carSpec> carsData;
 
     private int scoredashboardIndexMax = 4;
+    private int scoredashboardSplitSize = 30;
     TMPro.TextMeshProUGUI[] compTextTMP; // TMP Array from Game Objects' Components
 
     // Start is called before the first frame update
@@ -25,8 +28,9 @@ public class ScoreDashboard : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
+        changeBackgroundSize();
     }
 
     public void updateCarSpec(carSpec carSpec)
@@ -37,8 +41,8 @@ public class ScoreDashboard : MonoBehaviour
 
     private void updateScoreDash()
     {
-        updateScoreDashboard(scoredashboardColumns, 20, true);
-        updateScoreDashboard(generalScoredashboardColumns, 30);
+        updateScoreDashboard(scoredashboardColumns, scoredashboardSplitSize, true);
+        updateScoreDashboard(generalScoredashboardColumns, scoredashboardSplitSize);
     }
 
     private void parseCarSpec()
@@ -56,6 +60,13 @@ public class ScoreDashboard : MonoBehaviour
                 carsData[carSpecification.groupName] = carSpecification;
             }
         }
+    }
+
+    private void changeBackgroundSize()
+    {
+        RectTransform rt = backgroundCanvas.GetComponent<RectTransform>();
+        int columnCounts = (int)(carsData.Count / scoredashboardSplitSize) + 1;
+        rt.offsetMax = new Vector2(-(-530 * columnCounts + 1910), rt.offsetMax.y);
     }
 
     private void updateScoreDashboard(GameObject[] columns, int splitNum, bool scoreDash = false)

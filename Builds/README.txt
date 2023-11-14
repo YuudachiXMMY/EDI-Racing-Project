@@ -1,9 +1,11 @@
 # Build Updates
 - Fix LeaderBoard and DashBoard Rnaking Flash problem.
 - Improve the Accuracy of the LeaderBoard's Ranking.
+- Change Events' default duration to 10 Seconds.
 
 # Dev Updates
-- Add more Checkpoints for Ranking Updates (from 8 to 16)
+- Add more Checkpoints for Ranking Updates (from 8 to 14)
+- Upgrade LeaderBoard Background to auto fit the number of Columns
 
 
 build from 
