@@ -30,7 +30,7 @@ public class Automovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        updateTimes();
+        updateCarGlobalTimes();
         checkSpeedEvents();
     }
 
@@ -51,6 +51,7 @@ public class Automovement : MonoBehaviour
     public void resetRankedTime()
     {
         DashboardTime = 0;
+        updateDashboardTime();
         updateNavMeshAgent(true);
     }
 
@@ -63,6 +64,11 @@ public class Automovement : MonoBehaviour
         newEvent.Add("waitTime", waitTime);
         speedEvents.Add(newEvent);
         speedEventsCounter++;
+    }
+
+    public carSpec getCarSpec()
+    {
+        return carSpecification;
     }
 
     /// Private Methods
@@ -82,10 +88,15 @@ public class Automovement : MonoBehaviour
     }
 
     // Refresh all Timer with deltaTime
-    private void updateTimes()
+    private void updateCarGlobalTimes()
     {
         TravelingTimer += Time.deltaTime;
         DashboardTime += Time.deltaTime;
+        updateDashboardTime();
+    }
+
+    private void updateDashboardTime()
+    {
         carSpecification.automoveRankedTime = DashboardTime;
     }
 

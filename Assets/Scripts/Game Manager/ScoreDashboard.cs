@@ -21,12 +21,22 @@ public class ScoreDashboard : MonoBehaviour
     {
         carsData = new Dictionary<string, carSpec>();
         compTextTMP = new TMPro.TextMeshProUGUI[scoredashboardIndexMax];
+        parseCarSpec();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        parseCarSpec();
+    }
+
+    public void updateCarSpec(carSpec carSpec)
+    {
+        carsData[carSpec.groupName] = carSpec;
+        updateScoreDash();
+    }
+
+    private void updateScoreDash()
+    {
         updateScoreDashboard(scoredashboardColumns, 20, true);
         updateScoreDashboard(generalScoredashboardColumns, 30);
     }
@@ -50,8 +60,8 @@ public class ScoreDashboard : MonoBehaviour
 
     private void updateScoreDashboard(GameObject[] columns, int splitNum, bool scoreDash = false)
     {
-        var sortedCarsData = carsData.OrderByDescending(pair => pair.Value.automoveRankedTime)
-                                     .OrderByDescending(pair => pair.Value.automoveTargetsTotalCount);
+        var sortedCarsData = carsData.OrderByDescending(pair => pair.Value.automoveTargetsTotalCount)
+                                      .ThenByDescending(pair => pair.Value.automoveRankedTime);
                                     //.OrderByDescending(pair => pair.Value.automoveRound);
         int scoredashboardIndex = 0;
         int counts = 0;

@@ -18,5 +18,7 @@ public class carPointDetect : MonoBehaviour
     {
         Automovement automovement = other.gameObject.GetComponent<Automovement>();
         automovement.resetRankedTime();
+        ScoreDashboard scoreDashboard = GameObject.Find("GameManager_Track_1").GetComponent<ScoreDashboard>();
+        scoreDashboard.updateCarSpec(automovement.getCarSpec());
     }
 }

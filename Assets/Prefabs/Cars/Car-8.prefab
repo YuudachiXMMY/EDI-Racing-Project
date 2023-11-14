@@ -89,8 +89,8 @@ MonoBehaviour:
   color: red
   rbMass: 1500
   rbAngularDrag: 120
-  speed: 45
-  automoveSpeed: 45
+  speed: 60
+  automoveSpeed: 60
   automoveAngularSpeed: 350
   automoveAcceleration: 100
   automoveBaseOffset: 0.9
