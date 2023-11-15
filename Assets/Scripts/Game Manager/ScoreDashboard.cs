@@ -16,7 +16,7 @@ public class ScoreDashboard : MonoBehaviour
     private Dictionary<string, carSpec> carsData;
 
     private int scoredashboardIndexMax = 4;
-    private int scoredashboardSplitSize = 30;
+    private int scoredashboardSplitSize = 25;
     TMPro.TextMeshProUGUI[] compTextTMP; // TMP Array from Game Objects' Components
 
     // Start is called before the first frame update

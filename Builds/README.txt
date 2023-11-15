@@ -1,16 +1,15 @@
 # Build Updates
-- Fix LeaderBoard and DashBoard Rnaking Flash problem.
-- Improve the Accuracy of the LeaderBoard's Ranking.
-- Change Events' default duration to 10 Seconds.
-
-# Dev Updates
-- Add more Checkpoints for Ranking Updates (from 8 to 14)
-- Upgrade LeaderBoard Background to auto fit the number of Columns
+- Change Events' default duration from 5 to 10 Seconds.
+- Increase Button Event Speed.
+- Add button in Event Screen to Change Event Default Speed and Duration
+- Update [README.txt].
 
 
 build from 
 
----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+-------------------------------- !!!!! READ ME [README.txt] !!!!! ---------------------------------
+----------------------------------------------------------------------------------------------------
 
 # [README.txt]
 
@@ -31,31 +30,44 @@ build from
 
 ### 【Event Buttons】
 
-### Event-1 (Enter an Integer)
-Team names longer than entered Integer will reduce speed within 10 seconds.
+### Speed: (on the Right-Bottom)
+Will change Default Event Speed. Influence Both Speed Boost or Penalty.
 
-- Enter `length`  will `speed - 20` for `10` Time Unit.
+- Influence variable DEFAULT_SPEED`.
+- Default Value is `40`.
+- Not recommand to Boost Speed over 70.
+
+### Duration: (on the Right-Bottom)
+Will change Default Event Duration. Influence Both Speed Boost or Penalty.
+
+- Influence variable `DEFAULT_DURATION`.
+- Default Value is `10`.
+
+### Event-1 (Enter an Integer)
+Team names longer than entered Integer will reduce speed for 10 (Default) seconds.
+
+- Enter `length`  will `speed - DEFAULT_SPEED` for `DEFAULT_DURATION` Time Unit.
 `[length] : Any Integer`
 
 
 ### Event-2 (Enter a Color)
-Selected Car Color will increase speed within 10 seconds.
+Selected Car Color will increase speed for 10 (Default) seconds.
 
-- Enter `color`  will `speed + 20` for `10` Time Unit.
-`[color] : orange || black || yellow || blue || white || purple || green || red`
+- Enter `color`  will `speed + DEFAULT_SPEED` for `DEFAULT_DURATION` Time Unit.
+`[color] :  green || black || red || blue || white`
 
 
 ### Event-3 (Enter a Color)
-Selected Car Color will reduce speed within 10 seconds.
+Selected Car Color will reduce speed for 10 (Default) seconds.
 
-- Enter `color`  will `speed - 20` for `10` Time Unit.
-`[color] : orange || black || yellow || blue || white || purple || green || red`
+- Enter `color`  will `speed - DEFAULT_SPEED` for `DEFAULT_DURATION` Time Unit.
+`[color] : green || black || red || blue || white`
 
 
 ### Event-4 (Enter a Integer)
-Cars equipped with inputed index of Function will increase speed within 10 seconds.
+Cars equipped with inputed index of Function will increase speed for 10 (Default) seconds.
 
-- Car with `Function_Dictionary[Int]` will `speed + 20` for `10` Time Unit.
+- Car with `Function_Dictionary[Int]` will `speed + DEFAULT_SPEED` for `DEFAULT_DURATION` Time Unit.
 `[Function_Dictionary] : {
         {1, "male" },
         {2, "glasses" },
@@ -67,9 +79,9 @@ Cars equipped with inputed index of Function will increase speed within 10 secon
 
 
 ### Event-5 (Enter a Integer)
-Cars equipped with inputed index of Function will reduce speed within 10 seconds.
+Cars equipped with inputed index of Function will reduce speed for 10 (Default) seconds.
 
-- Car with `Function_Dictionary[Int]` will `speed + 20` for `10` Time Unit.
+- Car with `Function_Dictionary[Int]` will `speed + DEFAULT_SPEED` for `DEFAULT_DURATION` Time Unit.
 `[Function_Dictionary] : {
         {1, "male" },
         {2, "glasses" },

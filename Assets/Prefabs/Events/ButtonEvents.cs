@@ -10,10 +10,14 @@ using System.Drawing;
 public class ButtonEvents : MonoBehaviour
 {
 
+    public GameObject ChangeSpeedEvent_PlaceHolder;
+    public GameObject ChangeDuration_PlaceHolder;
+
     public GameObject ltObj;
     private Light lt;
 
-    private float waitTime = 5.0f;
+    private float defaultSpeed = 40;
+    private float waitTime = 10.0f;
     private GameObject[] cars;
 
     private GameObject snow;
@@ -48,6 +52,26 @@ public class ButtonEvents : MonoBehaviour
        cars  = GameObject.FindGameObjectsWithTag("Cars");
     }
 
+    public void changeDefaultSpeed(string input)
+    {
+        defaultSpeed = (float)Convert.ToDouble(input);
+        changePlaceHolder(ChangeSpeedEvent_PlaceHolder, ""+defaultSpeed);
+        ResetInputField("Change Speed Event");
+        Debug.Log("Speed " + defaultSpeed);
+    }
+    public void changeDefaultDuration(string input)
+    {
+        waitTime = (float)Convert.ToDouble(input);
+        changePlaceHolder(ChangeDuration_PlaceHolder, "" + waitTime);
+        ResetInputField("Change Duration");
+        Debug.Log("Duration " + waitTime);
+    }
+
+    private void changePlaceHolder(GameObject obj, string text)
+    {
+        obj.GetComponent<TMPro.TextMeshProUGUI>().text = text;
+    }
+
     public void Event_1(string input)
     {
         foreach (GameObject car in cars)
@@ -55,7 +79,7 @@ public class ButtonEvents : MonoBehaviour
             carSpec carSpecification = car.gameObject.GetComponent<carSpec>();
             Automovement carAutomovement = car.gameObject.GetComponent<Automovement>();
             bool flag = carSpecification.groupName.Length > Int32.Parse(input);
-            detectTriggerSpeedEvent(flag, -20, carAutomovement);
+            detectTriggerSpeedEvent(flag, -defaultSpeed, carAutomovement);
         }
 
         ResetInputField("Event-1");
@@ -63,25 +87,25 @@ public class ButtonEvents : MonoBehaviour
 
     public void Event_2(string input)
     {
-        changeCarSpeedByColor(input, 20);
+        changeCarSpeedByColor(input, defaultSpeed);
         ResetInputField("Event-2");
     }
 
     public void Event_3(string input)
     {
-        changeCarSpeedByColor(input, -20);
+        changeCarSpeedByColor(input, -defaultSpeed);
         ResetInputField("Event-3");
     }
 
     public void Event_4(string input)
     {
-        changeCarSpeedByFunction(input, 20);
+        changeCarSpeedByFunction(input, defaultSpeed);
         ResetInputField("Event-4");
     }
 
     public void Event_5(string input)
     {
-        changeCarSpeedByFunction(input, -20);
+        changeCarSpeedByFunction(input, -defaultSpeed);
         ResetInputField("Event-5");
     }
 
