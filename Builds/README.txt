@@ -1,8 +1,6 @@
 # Build Updates
-- Change Events' default duration from 5 to 10 Seconds.
-- Increase Button Event Speed.
-- Add button in Event Screen to Change Event Default Speed and Duration
-- Update [README.txt].
+- Add Detailed Event Title
+- Fix Event Button
 
 
 build from 
