@@ -1,6 +1,5 @@
 # Build Updates
-- Add Detailed Event Title
-- Fix Event Button
+- Add Group Name on Each car
 
 
 build from 
