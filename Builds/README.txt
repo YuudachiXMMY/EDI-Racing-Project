@@ -1,5 +1,5 @@
 # Build Updates
-- Add Group Name on Each car
+- Add Group Name on Each car (Hotkey `N` to show/hide group names)
 
 
 build from 
@@ -24,6 +24,7 @@ build from
 [H] Toggle (Open/Close) Score Ranking Dashboard
 [E] Open Events Menu (will Pause Game)
 [Tab] Open Score Dashboard (will Pause Game)
+[N] Show/Hide Group Names of the cars
 
 ### 【Event Buttons】
 

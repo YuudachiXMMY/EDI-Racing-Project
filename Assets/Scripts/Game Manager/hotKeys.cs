@@ -10,6 +10,7 @@ public class hotKeys : MonoBehaviour
     private GameObject[] pauseUIs;
     private GameObject[] scoreDashbaords;
     private GameObject[] scoreRanking;
+    private GameObject[] carNameTags;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,14 @@ public class hotKeys : MonoBehaviour
         setActive(eventButtons, false);
         setActive(scoreDashbaords, false);
         setActive(scoreRanking, false);
+    }
+
+    void FixedUpdate()
+    {
+        if (carNameTags == null || carNameTags.Length == 0)
+        {
+            carNameTags = GameObject.FindGameObjectsWithTag("CarNameTags");
+        }
     }
 
     // Update is called once per frame
@@ -67,6 +76,12 @@ public class hotKeys : MonoBehaviour
             setActive(scoreDashbaords, false);
             setActive(pauseUIs, false);
             setActive(scoreRanking);
+        }
+
+        // "N" to Show Each Car Name
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            toggleActive(carNameTags);
         }
 
     }
