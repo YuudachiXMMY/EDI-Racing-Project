@@ -1,5 +1,6 @@
 # Build Updates
-- Add Group Name on Each car (Hotkey `N` to show/hide group names)
+- Add Group Name on Each car (Hotkey `N` to show/hide group names) (Maximum Display Name: 5 Letters)
+- Add Exit Game Button in the Event Menu
 
 
 build from 

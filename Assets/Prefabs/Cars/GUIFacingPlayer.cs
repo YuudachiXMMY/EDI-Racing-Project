@@ -11,7 +11,9 @@ public class GUIFacingPlayer : MonoBehaviour
     void Start()
     {
         _object = GameObject.Find("InstructorPlayer");
-        this.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = this.transform.parent.gameObject.GetComponent<carSpec>().groupName;
+
+        string groupName = this.transform.parent.gameObject.GetComponent<carSpec>().groupName;
+        this.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = Left(groupName, 5);
     }
 
     // Update is called once per frame
@@ -19,4 +21,10 @@ public class GUIFacingPlayer : MonoBehaviour
     {
         transform.rotation = Quaternion.LookRotation(transform.position - _object.transform.position);
     }
+
+    private string Left(string str, int length)
+    {
+        return str.Substring(0, System.Math.Min(length, str.Length));
+    }
+
 }

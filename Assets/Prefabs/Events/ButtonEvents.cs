@@ -176,6 +176,13 @@ public class ButtonEvents : MonoBehaviour
         }
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Game is exiting");
+        //Just to make sure its working
+    }
+
 
     private void ResetInputField(string GameObjectName)
     {
