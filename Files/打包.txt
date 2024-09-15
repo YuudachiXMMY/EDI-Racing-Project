@@ -1,0 +1,1 @@
+pyinstaller --onefile -F -i jw.ico DataTool.py

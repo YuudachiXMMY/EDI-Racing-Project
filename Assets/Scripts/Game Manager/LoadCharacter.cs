@@ -43,7 +43,7 @@ public class LoadCharacter : MonoBehaviour
             }
             var columns = lines.Split(",");
             string characterName = columns[0].ToString();
-            int selectedCharacter = int.Parse(columns[1]) - 1;
+            int selectedCharacter = int.Parse(columns[1]);
             string[] funcList = columns[2].Split("/").Select(func => func.Trim().ToLower()).ToArray();
             initializePlayer(characterPrefabs[selectedCharacter], characterName, funcList);
         }

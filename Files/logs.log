@@ -1,0 +1,50 @@
+INFO:root:
+#################### Jadyn Wu ##################
+Thank you for downloading Jadyn Wu's Program
+I hope you find them useful in your projects
+If you have any questions, find my contact in
+my personal website below
+Cheers!
+                  JadynWu.com
+--------------------------------------------------
+Personal Website: https://jadynwu.com/
+GitHub: https://github.com/YuudachiXMMY
+################################################
+             
+INFO:root:Current Working Directory: W:\UnityProjects\EDI-Racing-Project\Files
+INFO:root:Parsing the input.xlsx file...
+ERROR:root:Error at division
+Traceback (most recent call last):
+  File "w:\UnityProjects\EDI-Racing-Project\Files\DataTool.py", line 134, in <module>
+    df, avg_df = parseData()
+                 ^^^^^^^^^^^
+  File "w:\UnityProjects\EDI-Racing-Project\Files\DataTool.py", line 86, in parseData
+    input_df = pd.read_excel(file_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jadyn Wu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\excel\_base.py", line 495, in read_excel
+    io = ExcelFile(
+         ^^^^^^^^^^
+  File "C:\Users\Jadyn Wu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\excel\_base.py", line 1550, in __init__
+    ext = inspect_excel_format(
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jadyn Wu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\excel\_base.py", line 1402, in inspect_excel_format
+    with get_handle(
+         ^^^^^^^^^^^
+  File "C:\Users\Jadyn Wu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'input.xlsx'
+INFO:root:Saving vehicleGroupData.csv file...
+ERROR:root:Error at division
+Traceback (most recent call last):
+  File "w:\UnityProjects\EDI-Racing-Project\Files\DataTool.py", line 143, in <module>
+    df.to_csv('vehicleGroupData.csv', sep=',', encoding='utf-8', index=False, header=False)
+    ^^
+NameError: name 'df' is not defined
+INFO:root:Saving AvgAnalysis.csv file...
+ERROR:root:Error at division
+Traceback (most recent call last):
+  File "w:\UnityProjects\EDI-Racing-Project\Files\DataTool.py", line 154, in <module>
+    avg_df.iloc[0:1,:].to_csv('AvgAnalysis.csv', sep=',', encoding='utf-8', index=False, header=True)
+    ^^^^^^
+NameError: name 'avg_df' is not defined
