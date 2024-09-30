@@ -82,8 +82,31 @@ def addFunctionToData(row):
         res += 'male/'
     return res.strip("/")
 
-def parseData(file_name="input.xlsx"):
-    input_df = pd.read_excel(file_name)
+def parseData(file_name="input.csv"):
+    try:
+        print("Trying to Read file: " + file_name)
+        if file_name.endswith('.csv'):
+            input_df = pd.read_csv(file_name)
+        else:
+            input_df = pd.read_excel(file_name)
+        print("Success!")
+        logging.info("Success!")
+    except:
+        print("Cannot Read file: " + file_name)
+        logging.info("Cannot Read file: " + file_name)
+
+        try:
+            print("Try reading input.csv")
+            logging.info("Try reading input.csv")
+            input_df = pd.read_csv("input.csv")
+            print("Success!")
+            logging.info("Success!")
+        except Exception as e:
+            logging.error('Error at %s', 'division', exc_info=e)
+
+
+    print("Parsing the file...")
+    logging.info("Parsing the file...")
 
     input_df["name_length"] = input_df.iloc[:,6].apply(lambda x: len(x))
 
@@ -128,29 +151,39 @@ def parseData(file_name="input.xlsx"):
 
     return df, avg_df
 
-try:
-    print("Parsing the input.xlsx file...")
-    logging.info("Parsing the input.xlsx file...")
-    df, avg_df = parseData()
-    print("Success!")
-    logging.info("Success!")
-except Exception as e:
-    logging.error('Error at %s', 'division', exc_info=e)
+def readInput():
+    res = input("""
+                Please enter your file name
+                press enter directly to read input.csv
+                (e.g. input.csv , Class1.xlsx)
+                """)
+    if res == "":
+        res = "input.csv"
+    return res
 
 try:
-    print("Saving vehicleGroupData.csv file...")
-    logging.info("Saving vehicleGroupData.csv file...")
-    df.to_csv('vehicleGroupData.csv', sep=',', encoding='utf-8', index=False, header=False)
+    res = readInput()
+    df, avg_df = parseData(res)
     print("Success!")
     logging.info("Success!")
-except Exception as e:
-    logging.error('Error at %s', 'division', exc_info=e)
 
-try:
-    print("Saving AvgAnalysis.csv file...")
-    logging.info("Saving AvgAnalysis.csv file...")
-    avg_df.iloc[0:1,:].to_csv('AvgAnalysis.csv', sep=',', encoding='utf-8', index=False, header=True)
-    print("Success!")
-    logging.info("Success!")
+    try:
+        print("Saving vehicleGroupData.csv file...")
+        logging.info("Saving vehicleGroupData.csv file...")
+        df.to_csv('vehicleGroupData.csv', sep=',', encoding='utf-8', index=False, header=False)
+        print("Success!")
+        logging.info("Success!")
+    except Exception as e:
+        logging.error('Error at %s', 'division', exc_info=e)
+
+    try:
+        print("Saving AvgAnalysis.csv file...")
+        logging.info("Saving AvgAnalysis.csv file...")
+        avg_df.iloc[0:1,:].to_csv('AvgAnalysis.csv', sep=',', encoding='utf-8', index=False, header=True)
+        print("Success!")
+        logging.info("Success!")
+    except Exception as e:
+        logging.error('Error at %s', 'division', exc_info=e)
+
 except Exception as e:
     logging.error('Error at %s', 'division', exc_info=e)
