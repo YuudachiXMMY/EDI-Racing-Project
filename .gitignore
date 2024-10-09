@@ -2,6 +2,9 @@
 Assets/CartoonTracksPack1/Track1/Textures/road_normal.png
 Assets/CartoonTracksPack1/Track1/Textures/road.psd
 
+# Mac
+.DS_Store
+
 # Zips
 *.zip
 *.7z

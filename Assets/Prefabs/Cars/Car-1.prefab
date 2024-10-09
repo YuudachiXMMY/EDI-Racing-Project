@@ -301,6 +301,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bcd97bcc728ec0348a2bdaee62d4c327, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1543b593351f7df43b6f41fd4939dad2, type: 2}
     - target: {fileID: 919132149155446097, guid: bcd97bcc728ec0348a2bdaee62d4c327, type: 3}
       propertyPath: m_Name
       value: Car-1
