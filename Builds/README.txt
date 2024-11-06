@@ -1,15 +1,22 @@
 # Build Updates
-- Add Group Name on Each car (Hotkey `N` to show/hide group names) (Maximum Display Name: 5 Letters)
-- Add Exit Game Button in the Event Menu
+- Fixed several Problems
+- Add DataTool.exe to Auto-Parse Vehicle data
 
-
-build from 
+build from 9483b8ad74e462d7b5424d87099620b786b8dae0
 
 ----------------------------------------------------------------------------------------------------
 -------------------------------- !!!!! READ ME [README.txt] !!!!! ---------------------------------
 ----------------------------------------------------------------------------------------------------
 
 # [README.txt]
+
+### Car Number : Color Mapping
+- 0 : green
+- 1 : black
+- 2 : red
+- 3 : blue
+- 4 : white
+- 5 : yellow (Debug Use ONLY)
 
 ### 【Basic Camera Movement】
 [1] Free Move from current position (Default)
@@ -28,6 +35,7 @@ build from
 [N] Show/Hide Group Names of the cars
 
 ### 【Event Buttons】
+Not Avaible Yet
 
 ### Speed: (on the Right-Bottom)
 Will change Default Event Speed. Influence Both Speed Boost or Penalty.

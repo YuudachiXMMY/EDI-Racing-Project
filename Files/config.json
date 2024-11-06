@@ -1,0 +1,17 @@
+{
+    "car_color_dict" : {
+        "green" : 0,
+        "orange" : 0,
+        "black" : 1,
+        "red" : 2,
+        "blue" : 3,
+        "white" : 4
+    },
+    "Files" : {
+        "DefaultInputFileName": "input.xlsx",
+        "DefaultOutputFileName": "vehicleGroupData.csv"
+    },
+    "ProgramConfig" : {
+        "ManualInputFileName" : false
+    }
+}

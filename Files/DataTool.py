@@ -13,8 +13,19 @@ import os, logging
 import numpy as np
 import pandas as pd
 import csv
+import json
 
 logging.basicConfig(filename="logs.log", filemode="w", level=logging.DEBUG)
+
+''' Start of Helper Methods '''
+def logInfo(contents):
+    print(contents)
+    logging.info(contents)
+
+def logSuccess():
+    print("Success!")
+    logging.info("Success!")
+''' End of Helper Methods '''
 
 info = """
 #################### Jadyn Wu ##################
@@ -29,13 +40,19 @@ Personal Website: https://jadynwu.com/
 GitHub: https://github.com/YuudachiXMMY
 ################################################
              """
-print(info)
-logging.info(info)
+
+logInfo(info)
 
 directory = os.path.abspath(os.path.join(os.path.curdir))
 
-print("Current Working Directory: " + directory)
-logging.info("Current Working Directory: " + directory)
+logInfo("Current Working Directory: " + directory)
+
+
+# Load config.json
+with open('config.json') as json_file:
+    configSettings = json.load(json_file)
+
+car_color_dict = configSettings["car_color_dict"]
 
 #check if dir exist if not create it
 def check_dir(file_name):
@@ -50,21 +67,12 @@ def column_index(df, query_cols):
     return sidx[np.searchsorted(cols,query_cols,sorter=sidx)]
 
 def transformToGameData():
-    output_file = directory+'//vehicleGroupData.csv'
+    output_file = directory+configSettings["Files"]["DefaultOutputFileName"]
     check_dir(output_file)
     with open(output_file, 'w', newline='') as file:
         writer = csv.writer(file)
 
-        writer.writerow(["SN", "Movie", "Protagonist"])
-
-car_color_dict = {
-    "green" : 0,
-    "orange" : 0,
-    "black" : 1,
-    "red" : 2,
-    "blue" : 3,
-    "white" : 4
-}
+        # writer.writerow(["SN", "Movie", "Protagonist"])
 
 def addFunctionToData(row):
     res = ''
@@ -84,47 +92,49 @@ def addFunctionToData(row):
 
 def parseData(file_name="input.csv"):
     try:
-        print("Trying to Read file: " + file_name)
+        logInfo("Trying to Read file: " + file_name)
         if file_name.endswith('.csv'):
             input_df = pd.read_csv(file_name)
         else:
             input_df = pd.read_excel(file_name)
-        print("Success!")
-        logging.info("Success!")
+        logSuccess()
     except:
-        print("Cannot Read file: " + file_name)
-        logging.info("Cannot Read file: " + file_name)
+        logInfo("Cannot Read file: " + file_name)
 
         try:
-            print("Try reading input.csv")
-            logging.info("Try reading input.csv")
+            logInfo("Try reading input.csv")
             input_df = pd.read_csv("input.csv")
-            print("Success!")
-            logging.info("Success!")
+            logSuccess()
         except Exception as e:
             logging.error('Error at %s', 'division', exc_info=e)
 
 
-    print("Parsing the file...")
-    logging.info("Parsing the file...")
+    logInfo("Parsing the file...")
 
-    input_df["name_length"] = input_df.iloc[:,6].apply(lambda x: len(x))
+    input_df["name_length"] = input_df.iloc[:,6].apply(lambda x: len(str(x)))
 
     # Cleaning for Data Analysis
     input_df["avg_facial"] = input_df.iloc[:,10].mean()
+    input_df["median_facial"] = input_df.iloc[:,10].median()
 
     input_df["avg_glasses"] = input_df.iloc[:,11].mean()
+    input_df["median_glasses"] = input_df.iloc[:,11].median()
 
     input_df["avg_language"] = input_df.iloc[:,12].mean()
+    input_df["median_language"] = input_df.iloc[:,12].median()
 
     input_df["avg_pwd"] = input_df.iloc[:,14].mean()
+    input_df["median_pwd"] = input_df.iloc[:,14].median()
 
     input_df["avg_distance"] = input_df.iloc[:,15].mean()
+    input_df["median_distance"] = input_df.iloc[:,15].median()
 
     input_df["avg_nameLength"] = input_df["name_length"].mean()
+    input_df["median_nameLength"] = input_df["name_length"].median()
 
     # Analysis DF
-    avg_df = input_df[["avg_nameLength", "avg_facial", "avg_glasses", "avg_language", "avg_pwd", "avg_distance"]]
+    avg_df = input_df[["avg_nameLength", "avg_facial", "avg_glasses", "avg_language", "avg_pwd", "avg_distance",
+                       "median_facial", "median_glasses", "median_language", "median_pwd", "median_distance", "median_nameLength"]]
 
     avg_df = avg_df.round(0)
 
@@ -152,36 +162,36 @@ def parseData(file_name="input.csv"):
     return df, avg_df
 
 def readInput():
-    res = input("""
-                Please enter your file name
-                press enter directly to read input.csv
-                (e.g. input.csv , Class1.xlsx)
-                """)
-    if res == "":
-        res = "input.csv"
+    if configSettings["ProgramConfig"]["ManualInputFileName"]:
+        res = input("""
+                    Please enter your file name
+                    press enter directly to read input.csv
+                    (e.g. input.csv , Class1.xlsx)
+                    """)
+    else:
+        res = configSettings["Files"]["DefaultInputFileName"]
+    if not (res.endswith(".csv") or res.endswith(".xlsx")):
+        logInfo("Input Error; now Trying to Read input.csv")
+        res = configSettings["Files"]["DefaultInputFileName"]
     return res
 
+## Main Program
 try:
     res = readInput()
     df, avg_df = parseData(res)
-    print("Success!")
-    logging.info("Success!")
+    logSuccess()
 
     try:
-        print("Saving vehicleGroupData.csv file...")
-        logging.info("Saving vehicleGroupData.csv file...")
+        logInfo("Saving vehicleGroupData.csv file...")
         df.to_csv('vehicleGroupData.csv', sep=',', encoding='utf-8', index=False, header=False)
-        print("Success!")
-        logging.info("Success!")
+        logSuccess()
     except Exception as e:
         logging.error('Error at %s', 'division', exc_info=e)
 
     try:
-        print("Saving AvgAnalysis.csv file...")
-        logging.info("Saving AvgAnalysis.csv file...")
+        logInfo("Saving AvgAnalysis.csv file...")
         avg_df.iloc[0:1,:].to_csv('AvgAnalysis.csv', sep=',', encoding='utf-8', index=False, header=True)
-        print("Success!")
-        logging.info("Success!")
+        logSuccess()
     except Exception as e:
         logging.error('Error at %s', 'division', exc_info=e)
 
